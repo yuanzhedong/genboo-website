@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genboo Robotics - Inspiring Young Inventors</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 400;
+            font-size: 16px;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #1a1a1a;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 120px 0 100px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-gray {
+            background: #f8f9fa;
+        }
+
+        .section h2 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+
+        .section p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .class-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 48px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e5e5;
+        }
+
+        .class-header {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .class-emoji {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .class-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .class-subtitle {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .class-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+            padding: 32px 0;
+            border-top: 1px solid #e5e5e5;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .class-description {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 24px;
+        }
+
+        .vex-link {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+            transition: all 0.2s ease;
+        }
+
+        .vex-link:hover {
+            color: #1a1a1a;
+            border-bottom-color: #1a1a1a;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 48px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #ccc;
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .team-section {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .team-section p {
+            margin-bottom: 24px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .value-item p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .credentials-highlight {
+            margin: 48px 0;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .credential-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .credential-item {
+            text-align: center;
+            padding: 24px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .credential-item:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .credential-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .credential-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .credential-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .contact-section {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        footer p {
+            color: #999;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { 
+                font-size: 40px; 
+            }
+            
+            .hero p { 
+                font-size: 18px; 
+            }
+            
+            .section h2 { 
+                font-size: 32px; 
+            }
+            
+            .class-details { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .grid-2 { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+            }
+            
+            nav ul { 
+                display: none; 
+            }
+            
+            .class-container {
+                padding: 32px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">Genboo Robotics</a>
+                <nav>
+                    <ul>
+                        <li><a href="#classes">Classes</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Where AI Meets Robotics</h1>
+                <p>Inspiring young minds through hands-on AI and robotics education. Where curiosity meets creativity, and every child becomes an inventor in the age of artificial intelligence.</p>
+                <a href="#classes" class="cta-button">Explore Classes</a>
+            </div>
+        </section>
+
+        <section id="classes" class="section section-gray">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 48px;">
+                    <h2>Our Classes</h2>
+                    <p style="font-size: 18px; color: #666; max-width: 600px; margin: 0 auto;">We're building a comprehensive curriculum that introduces children to both AI and robotics through age-appropriate, hands-on learning experiences.</p>
+                </div>
+
+                <div class="class-container">
+                    <div class="class-header">
+                        <div class="class-emoji">🚀</div>
+                        <h3 class="class-title">VEX 123 Robotics</h3>
+                        <p class="class-subtitle">Our foundational robotics class—the perfect starting point</p>
+                    </div>
+
+                    <div class="class-details">
+                        <div class="detail-item">
+                            <p class="detail-label">Start Date</p>
+                            <p class="detail-value">July 20</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Schedule</p>
+                            <p class="detail-value">Sundays<br>10:00–11:30 AM</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Age Group</p>
+                            <p class="detail-value">6–9 years old<br>(1st to 3rd grade)</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Duration</p>
+                            <p class="detail-value">1.5 hours</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Level</p>
+                            <p class="detail-value">Beginner</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="detail-label">Price</p>
+                            <p class="detail-value">$99 per session</p>
+                        </div>
+                    </div>
+
+                    <div class="class-description">
+                        <p>This hands-on class introduces young learners to the exciting world of robotics using VEX 123—a screen-free, interactive robot designed for early elementary students. Through storytelling, games, and simple coding activities, kids will learn problem-solving, collaboration, and the basics of robotics in a fun and supportive environment.</p>
+                        
+                        <p>Perfect for curious minds taking their very first step into STEM!</p>
+                        
+                        <p><strong>Learn more about VEX:</strong> <a href="https://www.vexrobotics.com/123" target="_blank" class="vex-link">www.vexrobotics.com/123</a></p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 48px; padding: 32px; background: white; border-radius: 12px; border: 1px solid #e5e5e5;">
+                    <h3 style="color: #1a1a1a; margin-bottom: 16px;">Coming Soon</h3>
+                    <p style="color: #666; margin-bottom: 24px;">We're developing additional classes that will introduce AI concepts, advanced robotics, and creative programming for different age groups.</p>
+                    <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-size: 14px; color: #999;">
+                        <span>🤖 Advanced Robotics</span>
+                        <span>🧠 AI for Kids</span>
+                        <span>💻 Creative Programming</span>
+                        <span>🎮 Game Development</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="grid-2">
+                    <div>
+                        <h2>Why Choose Our Program?</h2>
+                        <p>Learning AI and robotics should feel like an adventure, not a lecture. That's why we're building experiences that help kids think critically, build creatively, and fall in love with technology early. Whether your child dreams of building robots, exploring artificial intelligence, or just loves tinkering, we're here to help spark that lifelong curiosity.</p>
+                    </div>
+                    <div>
+                        <div class="grid-3">
+                            <div class="feature-card">
+                                <div class="feature-icon">🎮</div>
+                                <h3>Learning Through Play</h3>
+                                <p>We believe the best learning happens when kids are having fun. Our classes feel like playtime, not school time.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🧠</div>
+                                <h3>AI & Robotics Combined</h3>
+                                <p>Start with hands-on robotics, then gradually introduce AI concepts. Building the foundation for tomorrow's technology leaders.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">👥</div>
+                                <h3>Small Classes</h3>
+                                <p>Small class sizes ensure personalized attention and meaningful peer collaboration.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🏆</div>
+                                <h3>Expert Instructors</h3>
+                                <p>Learn from AI researchers and robotics engineers who know how to make complex concepts accessible and exciting.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section section-gray">
+            <div class="container">
+                <div class="team-section">
+                    <h2>Who Are We?</h2>
+                    <p>We are a team of curious builders and creative thinkers, brought together by a shared passion for AI, robotics, and inspiring the next generation of inventors.</p>
+                    
+                    <div class="credentials-highlight">
+                        <div class="credential-grid">
+                            <div class="credential-item">
+                                <div class="credential-icon">🎓</div>
+                                <h3>PhD in Robotics Research</h3>
+                                <p>Advanced degrees in robotics and AI from Stanford University and Shanghai Jiao Tong University</p>
+                            </div>
+                            <div class="credential-item">
+                                <div class="credential-icon">🌐</div>
+                                <h3>Tech Industry Veteran</h3>
+                                <p>AI researchers at NVIDIA, Google, and Baidu Research labs</p>
+                            </div>
+                            <div class="credential-item">
+                                <div class="credential-icon">🎨</div>
+                                <h3>UX Design Expert</h3>
+                                <p>Human-centered design for AI products and educational experiences</p>
+                            </div>
+                            <div class="credential-item">
+                                <div class="credential-icon">📚</div>
+                                <h3>Published Research</h3>
+                                <p>Machine learning and robotics research at top-tier conferences</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p>Our team combines world-class technical expertise from leading universities and top AI companies with deep experience in educational design. We've published research, shipped AI products used by millions, and now we're applying that same rigor and creativity to inspire the next generation of inventors.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="team-section">
+                    <h2>Our Story</h2>
+                    <p>We've known each other for nearly ten years and have worked together on and off at top AI labs. Along the way, we've built robots, shipped AI products, and shared a dream that goes back even further: <strong>what if we could make the kind of learning experience we wished for as kids?</strong></p>
+
+                    <p>This project is more than a class—it's a return to that childhood dream. A dream where building robots feels like playing with magic, where curiosity is celebrated, and where every kid feels empowered to create.</p>
+
+                    <p>We believe early exposure to technology, guided by joy, not pressure, can spark confidence, creativity, and a deep sense of possibility. That's why we've created a space that's not a bootcamp, but a sandbox: a place to explore, experiment, and fall in love with learning.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <div class="container">
+                <div class="team-section">
+                    <h2>Why Us?</h2>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <h3>We're Lifelong Builders</h3>
+                            <p>With deep roots in robotics research and AI product development, we bring serious technical expertise, combined with a playful approach.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>We Design for Kids, Not Just Engineers</h3>
+                            <p>Our backgrounds in AI/ML, robotics, product development, and design enable us to translate complex ideas into joyful learning experiences.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>We've Done This Before—Together</h3>
+                            <p>Our long-time friendship and collaboration mean we work as a tight, thoughtful team that shares values, humor, and a genuine love of teaching.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>We Believe in Early Empowerment</h3>
+                            <p>We see robotics as a modern form of literacy, and want every child to feel like they can build and belong in this space.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="contact-section">
+                    <h2>Ready to Start Building?</h2>
+                    <p>Join us for an unforgettable journey into the world of AI and robotics. Your child's adventure in STEM starts here.</p>
+                    
+                    <a href="mailto:hello@genboo.com" class="cta-button">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Genboo Robotics. Inspiring young inventors, one robot at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
