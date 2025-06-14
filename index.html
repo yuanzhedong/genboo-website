@@ -942,6 +942,33 @@
                 display: block;
             }
         }
+
+        .logo-flex {
+            display: flex;
+            align-items: center;
+        }
+        .logo-img {
+            height: 56px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 8px;
+            box-sizing: border-box;
+            display: block;
+        }
+        .logo-separator {
+            width: 1px;
+            height: 56px;
+            background: #E5E5E5;
+            margin: 0 20px;
+            display: block;
+        }
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0A0A0A;
+            line-height: 1;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -949,10 +976,10 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo" id="logo-link">
-              <span style="font-size:2rem; font-weight:600; color:#0A0A0A; display:flex; align-items:center; gap:16px;">
-                <span style="display:inline-block;">Genboo</span>
-                <span style="display:inline-block; width:1px; height:48px; background:#E5E5E5; margin:0 16px;"></span>
-                <img src="assets/images/logo.jpg" alt="Genboo Logo" style="height:80px; display:inline-block; vertical-align:middle; background:#fff; border-radius:8px; padding:8px; box-sizing:border-box;">
+              <span class="logo-flex">
+                <img src="assets/images/logo.jpg" alt="Genboo Logo" class="logo-img">
+                <span class="logo-separator"></span>
+                <span class="logo-text">Genboo</span>
               </span>
             </a>
             <nav>
