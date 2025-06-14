@@ -14,10 +14,10 @@
         :root {
             --primary: #0A0A0A;
             --secondary: #F5F5F5;
-            --accent: #0066FF;
+            --accent: #6366F1;
             --text-primary: #0A0A0A;
-            --text-secondary: #666666;
-            --text-tertiary: #999999;
+            --text-secondary: #333333;
+            --text-tertiary: #666666;
             --border: #E5E5E5;
             --hover: #F8F8F8;
             --gradient: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
@@ -39,18 +39,17 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
             transition: all 0.3s ease;
         }
 
         .nav-container {
             max-width: 1440px;
             margin: 0 auto;
-            padding: 24px 40px;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -86,11 +85,11 @@
         }
 
         nav a:hover {
-            color: var(--text-primary);
+            color: var(--accent);
         }
 
         .nav-cta {
-            background: var(--primary);
+            background: var(--accent);
             color: white !important;
             padding: 10px 24px;
             border-radius: 100px;
@@ -99,7 +98,7 @@
         }
 
         .nav-cta:hover {
-            background: #1A1A1A;
+            background: #4338CA;
             transform: translateY(-1px);
         }
 
@@ -109,7 +108,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 120px 40px 80px;
             background: #000;
             position: relative;
             overflow: hidden;
@@ -151,7 +149,7 @@
         .hero-content {
             max-width: 1440px;
             margin: 0 auto;
-            text-align: center;
+            text-align: left;
             z-index: 2;
             position: relative;
         }
@@ -208,7 +206,7 @@
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: var(--accent);
             color: white;
             padding: 16px 32px;
             text-decoration: none;
@@ -222,7 +220,7 @@
         }
 
         .btn-primary:hover {
-            background: #1A1A1A;
+            background: #4338CA;
             transform: translateY(-2px);
         }
 
@@ -331,7 +329,7 @@
         .class-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary);
+            border-color: var(--accent);
         }
 
         .class-card-header {
@@ -364,7 +362,7 @@
 
         .class-card-label {
             font-size: 14px;
-            color: var(--text-tertiary);
+            color: var(--text-secondary);
             font-weight: 500;
         }
 
@@ -640,9 +638,9 @@
         }
 
         .feature-number {
-            font-size: 48px;
+            font-size: 32px;
             font-weight: 700;
-            background: var(--gradient);
+            background: var(--accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -952,10 +950,10 @@
         <div class="nav-container">
             <a href="#" class="logo">Genboo</a>
             <nav>
-                <a href="#programs">Programs</a>
-                <a href="#about">About</a>
-                <a href="#approach">Approach</a>
-                <a href="#contact" class="nav-cta">Get Started</a>
+                <a href="#programs">Classes</a>
+                <a href="#about">About us</a>
+                <a href="#approach">How we teach</a>
+                <a href="#contact" class="nav-cta">Enroll Now</a>
             </nav>
             <button class="menu-toggle">
                 <span></span>
@@ -985,14 +983,13 @@
         <!-- Remove the grid background since we have video now -->
         
         <div class="hero-content">
-            <div class="hero-label">AI & Robotics Education</div>
-            <h1>Building Tomorrow's <span class="gradient-text">Inventors</span></h1>
+            <h1>Build.  <span class="gradient-text">Code.  </span>Create.  </h1>
             <p class="hero-description">
-                Where curiosity meets creation. We're empowering the next generation with hands-on AI and robotics education that turns dreamers into builders.
+                Our immersive AI & robotics programs ignite curiosity and empower kids to become tomorrow’s makers, thinkers, and leaders, led by researchers, engineers,and designers from world-class institutions like Stanford, Google, and NVIDIA.
             </p>
             <div class="hero-actions">
-                <a href="#programs" class="btn-primary">Explore Programs <span>→</span></a>
-                <a href="#contact" class="btn-secondary">Schedule a Visit</a>
+                <a href="#contact" class="btn-primary">Enroll for July 20</a>
+                <a href="#programs" class="btn-secondary">Explore Programs</a>
             </div>
         </div>
     </section>
@@ -1000,10 +997,10 @@
     <!-- Programs Section -->
     <section id="programs" class="section">
         <div class="section-header">
-            <p class="section-label">Our Programs</p>
-            <h2>Start Their Journey Today</h2>
+            <p class="section-label">Our Classes</p>
+            <h2>For Every Young Innovator</h2>
             <p class="section-description">
-                Progressive curriculum designed to grow with your child. From first-time coders to advanced builders, we meet learners where they are and take them where they dream to go.
+                From their very first line of code to advanced robotics projects, our progressive curriculum empowers kids to build real skills, gain confidence, and dream bigger every step of the way.
             </p>
         </div>
 
@@ -1022,16 +1019,16 @@
                             <span class="meta-value">6-9 years</span>
                         </div>
                         <div class="meta-item">
+                            <span class="meta-label">Level</span>
+                            <span class="meta-value">Beginner</span>
+                        </div>
+                        <div class="meta-item">
                             <span class="meta-label">Schedule</span>
                             <span class="meta-value">Sundays 10-11:30am</span>
                         </div>
                         <div class="meta-item">
                             <span class="meta-label">Start Date</span>
                             <span class="meta-value">July 20</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Level</span>
-                            <span class="meta-value">Beginner</span>
                         </div>
                     </div>
                     <p class="class-description">
@@ -1090,10 +1087,10 @@
     <section id="about" class="section" style="background: var(--secondary);">
         <div class="container">
             <div class="section-header">
-                <p class="section-label">Meet the Team</p>
-                <h2>World-Class Expertise, Kid-Friendly Approach</h2>
+                <p class="section-label">Our Team</p>
+                <h2>Builders with Deep Experience in AI & Robotics</h2>
                 <p class="section-description">
-                    We're not just engineers—we're a diverse team of AI researchers, robotics experts, and UX designers from the world's leading tech companies and universities.
+                    We’re a team of AI and robotics researchers, engineers, and designers, bringing over a decade of experience from leading universities and top tech companies—here to turn cutting-edge technology into playful, engaging, and skill-building experiences for kids of all ages.
                 </p>
             </div>
 
@@ -1182,39 +1179,33 @@
             <p class="section-label">Our Philosophy</p>
             <h2>Learning That Feels Like Magic</h2>
             <p class="section-description">
-                Developed by AI researchers who believe the best education doesn't feel like education at all—it feels like play, discovery, and adventure.
+                We believe the most powerful learning happens when kids are immersed in play, curiosity, and creative challenge. That’s why our curriculum is designed to feel like discovery, not instruction—backed by research, and built for joy.
             </p>
         </div>
 
         <div class="feature-grid">
             <div class="feature-item">
-                <div class="feature-number">01</div>
-                <h3>Hands-On From Day One</h3>
+                <div class="feature-number">Hands-On From Day One</div>
                 <p>No lectures, no textbooks. Just tools, robots, and the freedom to create from the very first class.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-number">02</div>
-                <h3>Small Groups, Big Impact</h3>
+                <div class="feature-number">Small Groups, Big Impact</div>
                 <p>Maximum 8 students per class ensures personalized attention and meaningful peer collaboration.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-number">03</div>
-                <h3>Real Tools, Real Skills</h3>
+                <div class="feature-number">Real Tools, Real Skills</div>
                 <p>Industry-standard robotics platforms and programming languages that grow with your child.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-number">04</div>
-                <h3>Progress You Can See</h3>
+                <div class="feature-number">Progress You Can See</div>
                 <p>Regular showcases where kids present their creations to family and friends.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-number">05</div>
-                <h3>Expert Mentorship</h3>
+                <div class="feature-number">Expert Mentorship</div>
                 <p>Learn from AI researchers and robotics engineers who know how to make complex concepts click.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-number">06</div>
-                <h3>Future-Ready Skills</h3>
+                <div class="feature-number">Future-Ready Skills</div>
                 <p>Building creativity, problem-solving, and collaboration skills that matter in any field.</p>
             </div>
         </div>
