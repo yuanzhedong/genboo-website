@@ -950,7 +950,13 @@
     <!-- Navigation -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">Genboo</a>
+            <a href="#" class="logo" id="logo-link">
+              <span style="font-size:2rem; font-weight:600; color:#0A0A0A; display:flex; align-items:center; gap:16px;">
+                <span style="display:inline-block;">Genboo</span>
+                <span style="display:inline-block; width:1px; height:48px; background:#E5E5E5; margin:0 16px;"></span>
+                <img src="assets/images/logo.jpg" alt="Genboo Logo" style="height:80px; display:inline-block; vertical-align:middle; background:#fff; border-radius:8px; padding:8px; box-sizing:border-box;">
+              </span>
+            </a>
             <nav>
                 <a href="#programs">Programs</a>
                 <a href="#about">About</a>
@@ -1320,6 +1326,12 @@
                     });
                 }
             });
+        });
+
+        // Smooth scroll to top when clicking the logo
+        document.getElementById('logo-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
