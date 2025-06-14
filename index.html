@@ -18,8 +18,8 @@
             --text-primary: #0A0A0A;
             --text-secondary: #333333;
             --text-tertiary: #666666;
-            --border: #E5E5E5;
-            --hover: #F8F8F8;
+            --border: #F3F4F6;
+            --hover: #EEF2FF;
             --gradient: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
         }
 
@@ -39,7 +39,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
@@ -75,10 +75,10 @@
         }
 
         nav a {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             text-decoration: none;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: -0.01em;
             transition: color 0.2s ease;
             position: relative;
@@ -149,6 +149,7 @@
         .hero-content {
             max-width: 1440px;
             margin: 0 auto;
+            padding: 40px 0;
             text-align: left;
             z-index: 2;
             position: relative;
@@ -176,7 +177,7 @@
             line-height: 0.95;
             letter-spacing: -0.04em;
             color: white;
-            margin-bottom: 32px;
+            margin-bottom: 48px;
             animation: fadeInUp 0.8s ease 0.1s both;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -189,18 +190,18 @@
         }
 
         .hero-description {
-            font-size: 22px;
+            font-size: 24px;
             line-height: 1.5;
             color: rgba(255, 255, 255, 0.9);
             max-width: 680px;
-            margin: 0 auto 48px;
+            margin: 0 auto 64px;
             animation: fadeInUp 0.8s ease 0.2s both;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .hero-actions {
             display: flex;
-            gap: 16px;
+            gap: 48px;
             justify-content: center;
             animation: fadeInUp 0.8s ease 0.3s both;
         }
@@ -211,7 +212,7 @@
             padding: 16px 32px;
             text-decoration: none;
             border-radius: 100px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
             transition: all 0.2s ease;
             display: inline-flex;
@@ -230,7 +231,7 @@
             padding: 16px 32px;
             text-decoration: none;
             border-radius: 100px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
             transition: all 0.2s ease;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -275,7 +276,7 @@
 
         /* Main Content Section */
         .section {
-            padding: 120px 40px;
+            padding: 100px;
         }
 
         .section-header {
@@ -297,7 +298,7 @@
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -0.03em;
-            color: var(--text-primary);
+            color: var(--accent);
             margin-bottom: 24px;
         }
 
@@ -445,7 +446,7 @@
         }
 
         .credentials-showcase {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto 80px;
         }
 
@@ -581,13 +582,12 @@
         }
 
         .team-story {
-            max-width: 900px;
-            margin: 80px auto 0;
+            width: auto;
             padding: 60px;
             background: white;
             border-radius: 20px;
             border: 1px solid var(--border);
-            text-align: center;
+            text-align: left;
         }
 
         .team-story h3 {
@@ -611,7 +611,7 @@
         /* Feature Section */
         .feature-grid {
             max-width: 1440px;
-            margin: 0 auto;
+            margin: 8p auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
@@ -619,8 +619,7 @@
 
         .feature-item {
             padding: 60px 40px;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            border: 1px solid var(--border);
             background: white;
             transition: all 0.3s ease;
         }
@@ -629,18 +628,10 @@
             background: var(--hover);
         }
 
-        .feature-item:nth-child(3n) {
-            border-right: none;
-        }
-
-        .feature-item:nth-last-child(-n+3) {
-            border-bottom: none;
-        }
-
         .feature-number {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
-            background: var(--accent);
+            background: var(--text-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -710,7 +701,7 @@
 
         /* Footer */
         footer {
-            background: var(--secondary);
+            background: white;
             padding: 80px 40px 40px;
             border-top: 1px solid var(--border);
         }
@@ -773,7 +764,9 @@
         .footer-bottom {
             padding-top: 40px;
             border-top: 1px solid var(--border);
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .footer-bottom p {
@@ -1000,13 +993,13 @@
         <!-- Remove the grid background since we have video now -->
         
         <div class="hero-content">
-            <h1>Build.  <span class="gradient-text">Code.  </span>Create.  </h1>
+            <h1>Build. <span class="gradient-text">Code.</span> Create. <span style="color:var(--accent)">Innovate.</span></h1>
             <p class="hero-description">
-                Our immersive AI & robotics programs ignite curiosity and empower kids to become tomorrow's makers, thinkers, and leaders, led by researchers, engineers,and designers from world-class institutions like Stanford, Google, and NVIDIA.
+                Our immersive AI & robotics programs ignite curiosity and empower kids to become tomorrow's makers, thinkers, and leaders, led by researchers, engineers, and designers from world-class institutions like Stanford University, Carnegie Mellon University, Google, Baidu, NVIDIA, and Apple.
             </p>
             <div class="hero-actions">
                 <a href="#contact" class="btn-primary">Enroll for July 20</a>
-                <a href="#programs" class="btn-secondary">Explore Programs</a>
+                <a href="#programs" class="btn-secondary">Explore Classes</a>
             </div>
         </div>
     </section>
@@ -1061,7 +1054,7 @@
             </div>
 
             <!-- Coming Soon Card -->
-            <div class="class-card" style="opacity: 0.7;">
+            <div class="class-card">
                 <div class="class-card-header">
                     <div class="class-icon">🧠</div>
                     <h3>AI Explorers</h3>
@@ -1074,16 +1067,16 @@
                             <span class="meta-value">10-14 years</span>
                         </div>
                         <div class="meta-item">
+                            <span class="meta-label">Level</span>
+                            <span class="meta-value">Intermediate</span>
+                        </div>
+                        <div class="meta-item">
                             <span class="meta-label">Schedule</span>
                             <span class="meta-value">TBD</span>
                         </div>
                         <div class="meta-item">
                             <span class="meta-label">Duration</span>
                             <span class="meta-value">12 weeks</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Level</span>
-                            <span class="meta-value">Intermediate</span>
                         </div>
                     </div>
                     <p class="class-description">
@@ -1105,7 +1098,7 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Our Team</p>
-                <h2>Builders with Deep Experience in AI & Robotics</h2>
+                <h2>Experienced Builders in AI & Robotics</h2>
                 <p class="section-description">
                     We're a team of AI and robotics researchers, engineers, and designers, bringing over a decade of experience from leading universities and top tech companies—here to turn cutting-edge technology into playful, engaging, and skill-building experiences for kids of all ages.
                 </p>
@@ -1129,8 +1122,6 @@
                                 <span class="separator">•</span>
                                 <span>Carnegie Mellon University</span>
                                 <span class="separator">•</span>
-                                <span>Tsinghua University</span>
-                                <span class="separator">•</span>
                                 <span>Shanghai Jiao Tong University</span>
                                 <span class="separator">•</span>
                             </span>
@@ -1147,8 +1138,6 @@
                                 <span class="separator">•</span>
                                 <span>Carnegie Mellon University</span>
                                 <span class="separator">•</span>
-                                <span>Tsinghua University</span>
-                                <span class="separator">•</span>
                                 <span>Shanghai Jiao Tong University</span>
                                 <span class="separator">•</span>
                             </span>
@@ -1160,16 +1149,16 @@
                     <div class="credential-card">
                         <div class="credential-icon">🎓</div>
                         <h4>PhD in Robotics Research</h4>
-                        <p>Advanced degrees in robotics and AI from Carnegie Mellon University, Stanford University and Shanghai Jiao Tong University</p>
+                        <p>Advanced degrees in robotics and AI from Carnegie Mellon University, Stanford University, and Shanghai Jiao Tong University</p>
                     </div>
                     <div class="credential-card">
                         <div class="credential-icon">🌐</div>
                         <h4>Tech Industry Veterans</h4>
-                        <p>AI researchers from NVIDIA, Google, Apple, and Baidu Research labs with years of cutting-edge experience</p>
+                        <p>AI researchers from NVIDIA, Google, Apple, Baidu Research, and Carnegie Mellon University with years of cutting-edge experience</p>
                     </div>
                     <div class="credential-card">
                         <div class="credential-icon">🎨</div>
-                        <h4>UX Design Experts</h4>
+                        <h4>AI & UX Design Experts</h4>
                         <p>Human-centered design for AI products and educational experiences that kids actually love</p>
                     </div>
                     <div class="credential-card">
@@ -1181,11 +1170,22 @@
             </div>
 
             <!-- Our Story -->
-            <div class="team-story">
-                <h3>Our Story</h3>
-                <p>We've known each other for nearly ten years, working together at top AI labs like NVIDIA, Google, and Baidu Research. Along the way, we've built cutting-edge AI systems, published research, and shipped products used by millions.</p>
-                <p>But we've always shared a bigger dream: <strong>What if we could create the kind of learning experience we wished for as kids?</strong></p>
-                <p>This isn't just another coding school. It's a passion project from a team that's been at the forefront of AI and robotics, now dedicated to making that same technology accessible and magical for the next generation.</p>
+            <div class="team-story-container" style="display: flex; justify-content: space-between; gap: 40px;">
+                <!-- Video Section -->
+                <div style="aspect-ratio: 1 / 1; width: 100%; max-width: 400px; display: flex; align-items: center; justify-content: center;">
+                    <video controls loop muted autoplay style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                        <source src="assets/videos/demo.mov" type="video/quicktime">
+                        <source src="assets/videos/demo.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <!-- Our Story -->
+                <div class="team-story">
+                    <h3>Our Story</h3>
+                    <p>We've known each other for nearly ten years, working together at top AI labs and universities like Carnegie Mellon University, Stanford, NVIDIA, Google, Baidu Research, and Apple Special Projects Group (SPG). Along the way, we've built cutting-edge AI systems, published research, and shipped products used by millions.</p>
+                    <p>But we've always shared a bigger dream: <strong>What if we could create the kind of learning experience we wished for as kids?</strong></p>
+                    <p>This isn't just another coding school. It's a passion project from a team that's been at the forefront of AI and robotics, now dedicated to making that same technology accessible and magical for the next generation.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1228,22 +1228,12 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section id="contact" class="section cta-section">
-        <div class="cta-content">
-            <h2>Ready to Start Building?</h2>
-            <p>Join us for an unforgettable journey into the world of AI and robotics. Your child's adventure in STEM starts here.</p>
-            
-            <a href="mailto:hello@genboo.com" class="btn-white">Get in Touch <span>→</span></a>
-        </div>
-    </section>
-
     <!-- Registration Section -->
     <section id="registration" class="section" style="background: var(--secondary);">
         <div class="section-header">
-            <p class="section-label">Register Now</p>
-            <h2>Sign Up for a Program</h2>
-            <p class="section-description">Fill out the form below to register your child for one of our programs or join the waitlist.</p>
+            <p class="section-label">Class Registration</p>
+            <h2>Let's Build! Register Now</h2>
+            <p class="section-description">Fill out the short form below to secure a spot or join the waitlist.</p>
         </div>
         <form action="https://formspree.io/f/xqabbeeb" method="POST" style="max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
             <label for="name" style="display:block; margin-bottom:8px; color: var(--text-primary); font-weight:500;">Name</label>
@@ -1270,7 +1260,7 @@
             <!-- Honeypot field for spam protection -->
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-            <button type="submit" style="background: var(--primary); color: white; padding: 14px 40px; border: none; border-radius: 4px; font-size: 18px; font-weight: 500; cursor: pointer;">Send</button>
+            <button type="submit" style="background: var(--accent); font-weight:600; color: white; padding: 14px 40px; border: none; border-radius: 24px; font-size: 18px; font-weight: 600; cursor: pointer;">Send</button>
         </form>
     </section>
 
@@ -1280,7 +1270,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h3>Genboo Robotics</h3>
-                    <p>Building tomorrow's inventors through hands-on AI and robotics education.</p>
+                    <p>Immersive AI & robotics programs empower kids to become tomorrow's makers, thinkers, and leaders.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Programs</h4>
@@ -1293,14 +1283,13 @@
                     <h4>About</h4>
                     <ul>
                         <li><a href="#about">Our Team</a></li>
-                        <li><a href="#approach">Our Approach</a></li>
+                        <li><a href="#approach">Our Philosophy</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul>
                         <li><a href="mailto:hello@genboo.com">hello@genboo.com</a></li>
-                        <li><a href="#">Schedule a Visit</a></li>
                     </ul>
                 </div>
             </div>
