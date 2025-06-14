@@ -18,8 +18,8 @@
             --text-primary: #0A0A0A;
             --text-secondary: #333333;
             --text-tertiary: #666666;
-            --border: #E5E5E5;
-            --hover: #F8F8F8;
+            --border: #F3F4F6;
+            --hover: #EEF2FF;
             --gradient: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
         }
 
@@ -611,7 +611,7 @@
         /* Feature Section */
         .feature-grid {
             max-width: 1440px;
-            margin: 0 auto;
+            margin: 8p auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
@@ -619,22 +619,13 @@
 
         .feature-item {
             padding: 60px 40px;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            border: 0.5px solid var(--border);
             background: white;
             transition: all 0.3s ease;
         }
 
         .feature-item:hover {
             background: var(--hover);
-        }
-
-        .feature-item:nth-child(3n) {
-            border-right: none;
-        }
-
-        .feature-item:nth-last-child(-n+3) {
-            border-bottom: none;
         }
 
         .feature-number {
