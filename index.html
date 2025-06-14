@@ -458,6 +458,31 @@
             background: white;
             border-radius: 16px;
             border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .company-names-roller {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .company-names-inner {
+            display: flex;
+            white-space: nowrap;
+            animation: company-scroll 30s linear infinite;
+        }
+
+        @keyframes company-scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .company-names {
@@ -465,11 +490,11 @@
             font-weight: 500;
             color: var(--text-secondary);
             letter-spacing: -0.01em;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+            margin: 0;
+            padding: 0;
         }
 
         .company-names span:not(.separator) {
@@ -480,6 +505,7 @@
         .separator {
             color: var(--border);
             font-weight: 300;
+            margin: 0 32px;
         }
 
         .credentials-grid {
@@ -1074,29 +1100,58 @@
             <!-- Company Credentials -->
             <div class="credentials-showcase">
                 <div class="company-text-bar">
-                    <p class="company-names">
-                        <span>NVIDIA</span>
-                        <span class="separator">•</span>
-                        <span>Google</span>
-                        <span class="separator">•</span>
-                        <span>Baidu Research</span>
-                        <span class="separator">•</span>
-                        <span>Stanford University</span>
-                        <span class="separator">•</span>
-                        <span>Shanghai Jiao Tong University</span>
-                    </p>
+                    <div class="company-names-roller">
+                        <div class="company-names-inner">
+                            <span class="company-names">
+                                <span>NVIDIA</span>
+                                <span class="separator">•</span>
+                                <span>Google</span>
+                                <span class="separator">•</span>
+                                <span>Apple</span>
+                                <span class="separator">•</span>
+                                <span>Baidu Research</span>
+                                <span class="separator">•</span>
+                                <span>Stanford University</span>
+                                <span class="separator">•</span>
+                                <span>Carnegie Mellon University</span>
+                                <span class="separator">•</span>
+                                <span>Tsinghua University</span>
+                                <span class="separator">•</span>
+                                <span>Shanghai Jiao Tong University</span>
+                                <span class="separator">•</span>
+                            </span>
+                            <span class="company-names">
+                                <span>NVIDIA</span>
+                                <span class="separator">•</span>
+                                <span>Google</span>
+                                <span class="separator">•</span>
+                                <span>Apple</span>
+                                <span class="separator">•</span>
+                                <span>Baidu Research</span>
+                                <span class="separator">•</span>
+                                <span>Stanford University</span>
+                                <span class="separator">•</span>
+                                <span>Carnegie Mellon University</span>
+                                <span class="separator">•</span>
+                                <span>Tsinghua University</span>
+                                <span class="separator">•</span>
+                                <span>Shanghai Jiao Tong University</span>
+                                <span class="separator">•</span>
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="credentials-grid">
                     <div class="credential-card">
                         <div class="credential-icon">🎓</div>
                         <h4>PhD in Robotics Research</h4>
-                        <p>Advanced degrees in robotics and AI from Stanford University and Shanghai Jiao Tong University</p>
+                        <p>Advanced degrees in robotics and AI from Carnegie Mellon University, Stanford University and Shanghai Jiao Tong University</p>
                     </div>
                     <div class="credential-card">
                         <div class="credential-icon">🌐</div>
                         <h4>Tech Industry Veterans</h4>
-                        <p>AI researchers from NVIDIA, Google, and Baidu Research labs with years of cutting-edge experience</p>
+                        <p>AI researchers from NVIDIA, Google, Apple, and Baidu Research labs with years of cutting-edge experience</p>
                     </div>
                     <div class="credential-card">
                         <div class="credential-icon">🎨</div>
