@@ -479,7 +479,7 @@
         .company-text-bar {
             text-align: center;
             margin-bottom: 60px;
-            padding: 48px 16px;
+            padding: 16px;
             background: white;
             border-radius: 16px;
             border: 1px solid var(--border);
@@ -490,13 +490,14 @@
             width: 100%;
             overflow: hidden;
             position: relative;
-            height: 32px;
+            height: 64px;
             display: flex;
             align-items: center;
         }
 
         .company-names-inner {
             display: flex;
+            vertical-align: middle;
             white-space: nowrap;
             animation: company-scroll 30s linear infinite;
         }
@@ -516,7 +517,7 @@
             color: var(--text-secondary);
             letter-spacing: -0.01em;
             display: flex;
-            vertical-align: middle;
+            align-items: center;
             white-space: nowrap;
             margin: 0;
             padding: 0;
@@ -1010,6 +1011,26 @@
             }
         }
 
+        .company-logo {
+            display: flex;
+            height: 64px; /* Set a height for the logos */
+            margin: 0 24px; /* Add horizontal margin for spacing */
+            vertical-align: middle; /* Align logos vertically */
+            justify-content: center;
+            transition: transform 0.2s; /* Add a transition for hover effect */
+        }
+
+        .company-logo:hover {
+            transform: scale(1.1); /* Slightly enlarge the logo on hover */
+        }
+
+        .separator {
+            color: gray; /* Ensure this is visible */
+            font-weight: 300;
+            margin: 0 10px; /* Adjust this value for spacing */
+            font-size: 18px; /* Ensure the font size is appropriate */
+        }
+
         .mobile-menu {
             position: absolute;
             top: 72px;
@@ -1235,38 +1256,24 @@
                 <div class="company-text-bar">
                     <div class="company-names-roller">
                         <div class="company-names-inner">
-                            <span class="company-names">
-                                <span>NVIDIA</span>
-                                <span class="separator">•</span>
-                                <span>Google</span>
-                                <span class="separator">•</span>
-                                <span>Apple</span>
-                                <span class="separator">•</span>
-                                <span>Baidu Research</span>
-                                <span class="separator">•</span>
-                                <span>Stanford University</span>
-                                <span class="separator">•</span>
-                                <span>Carnegie Mellon University</span>
-                                <span class="separator">•</span>
-                                <span>Shanghai Jiao Tong University</span>
-                                <span class="separator">•</span>
-                            </span>
-                            <span class="company-names">
-                                <span>NVIDIA</span>
-                                <span class="separator">•</span>
-                                <span>Google</span>
-                                <span class="separator">•</span>
-                                <span>Apple</span>
-                                <span class="separator">•</span>
-                                <span>Baidu Research</span>
-                                <span class="separator">•</span>
-                                <span>Stanford University</span>
-                                <span class="separator">•</span>
-                                <span>Carnegie Mellon University</span>
-                                <span class="separator">•</span>
-                                <span>Shanghai Jiao Tong University</span>
-                                <span class="separator">•</span>
-                            </span>
+                            <div class="company-names">
+                                <img src="assets/images/nvidia-logo.png" alt="NVIDIA" class="company-logo" style="height: 24px;">
+                                <img src="assets/images/google-logo.png" alt="Google" class="company-logo" style="height: 32px;">
+                                <img src="assets/images/baidu-logo.png" alt="Baidu Research" class="company-logo" style="height: 54px;">
+                                <img src="assets/images/stanford-logo.png" alt="Stanford University" class="company-logo" style="height: 48px;">
+                                <img src="assets/images/cmu-logo.png" alt="Carnegie Mellon University" class="company-logo" style="height: 20px;">
+                                <img src="assets/images/sjtu-logo.png" alt="Shanghai Jiao Tong University" class="company-logo" style="height: 48px;">
+                                <img src="assets/images/thu-logo.png" alt="Tsinghua University" class="company-logo" style="height: 108px;">
+                            </div>
+                            <div class="company-names">
+                                <img src="assets/images/nvidia-logo.png" alt="NVIDIA" class="company-logo" style="height: 24px;">
+                                <img src="assets/images/google-logo.png" alt="Google" class="company-logo" style="height: 32px;">
+                                <img src="assets/images/baidu-logo.png" alt="Baidu Research" class="company-logo" style="height: 54px;">
+                                <img src="assets/images/stanford-logo.png" alt="Stanford University" class="company-logo" style="height: 48px;">
+                                <img src="assets/images/cmu-logo.png" alt="Carnegie Mellon University" class="company-logo" style="height: 20px;">
+                                <img src="assets/images/sjtu-logo.png" alt="Shanghai Jiao Tong University" class="company-logo" style="height: 48px;">
+                                <img src="assets/images/thu-logo.png" alt="Tsinghua University" class="company-logo" style="height: 72px;">
+                            </div>
                         </div>
                     </div>
                 </div>
