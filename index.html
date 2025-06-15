@@ -522,6 +522,7 @@
         .company-names span:not(.separator) {
             color: var(--text-primary);
             font-weight: 600;
+            margin-right: 24px;
         }
 
         .separator {
@@ -842,11 +843,6 @@
                 border-right: none;
             }
 
-            .company-names {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
             .separator {
                 display: none;
             }
@@ -865,8 +861,13 @@
             }
 
             .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 48px;
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 24px;
             }
         }
 
