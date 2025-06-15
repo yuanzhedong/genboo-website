@@ -605,7 +605,7 @@
         }
 
         .team-story {
-            max-width: 900px;
+            width: auto;
             padding: 60px;
             background: white;
             border-radius: 20px;
@@ -797,20 +797,6 @@
             color: var(--text-tertiary);
         }
 
-        .social-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .social-links a {
-            color: var(--text-tertiary);
-            transition: color 0.2s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--text-primary);
-        }
-
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -956,13 +942,46 @@
                 display: block;
             }
         }
+
+        .logo-flex {
+            display: flex;
+            align-items: center;
+        }
+        .logo-img {
+            height: 56px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 8px;
+            box-sizing: border-box;
+            display: block;
+        }
+        .logo-separator {
+            width: 1px;
+            height: 56px;
+            background: #E5E5E5;
+            margin: 0 20px;
+            display: block;
+        }
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0A0A0A;
+            line-height: 1;
+            display: block;
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">Genboo</a>
+            <a href="#" class="logo" id="logo-link">
+              <span class="logo-flex">
+                <img src="assets/images/logo.jpg" alt="Genboo Logo" class="logo-img">
+                <span class="logo-separator"></span>
+                <span class="logo-text">Genboo</span>
+              </span>
+            </a>
             <nav>
                 <a href="#programs">Classes</a>
                 <a href="#about">About us</a>
@@ -997,9 +1016,9 @@
         <!-- Remove the grid background since we have video now -->
         
         <div class="hero-content">
-            <h1>Build.  <span class="gradient-text">Code.  </span>Create.  </h1>
+            <h1>Build. <span class="gradient-text">Code.</span> Create. <span style="color:var(--accent)">Innovate.</span></h1>
             <p class="hero-description">
-                Our immersive AI & robotics programs ignite curiosity and empower kids to become tomorrow’s makers, thinkers, and leaders, led by researchers, engineers,and designers from world-class institutions like Stanford, Google, and NVIDIA.
+                Our immersive AI & robotics programs ignite curiosity and empower kids to become tomorrow's makers, thinkers, and leaders, led by researchers, engineers, and designers from world-class institutions like Stanford University, Carnegie Mellon University, Google, Baidu, NVIDIA, and Apple.
             </p>
             <div class="hero-actions">
                 <a href="#contact" class="btn-primary">Enroll for July 20</a>
@@ -1104,7 +1123,7 @@
                 <p class="section-label">Our Team</p>
                 <h2>Experienced Builders in AI & Robotics</h2>
                 <p class="section-description">
-                    We’re a team of AI and robotics researchers, engineers, and designers, bringing over a decade of experience from leading universities and top tech companies—here to turn cutting-edge technology into playful, engaging, and skill-building experiences for kids of all ages.
+                    We're a team of AI and robotics researchers, engineers, and designers, bringing over a decade of experience from leading universities and top tech companies—here to turn cutting-edge technology into playful, engaging, and skill-building experiences for kids of all ages.
                 </p>
             </div>
 
@@ -1126,8 +1145,6 @@
                                 <span class="separator">•</span>
                                 <span>Carnegie Mellon University</span>
                                 <span class="separator">•</span>
-                                <span>Tsinghua University</span>
-                                <span class="separator">•</span>
                                 <span>Shanghai Jiao Tong University</span>
                                 <span class="separator">•</span>
                             </span>
@@ -1144,8 +1161,6 @@
                                 <span class="separator">•</span>
                                 <span>Carnegie Mellon University</span>
                                 <span class="separator">•</span>
-                                <span>Tsinghua University</span>
-                                <span class="separator">•</span>
                                 <span>Shanghai Jiao Tong University</span>
                                 <span class="separator">•</span>
                             </span>
@@ -1157,12 +1172,12 @@
                     <div class="credential-card">
                         <div class="credential-icon">🎓</div>
                         <h4>PhD in Robotics Research</h4>
-                        <p>Advanced degrees in robotics and AI from Carnegie Mellon University, Stanford University and Shanghai Jiao Tong University</p>
+                        <p>Advanced degrees in robotics and AI from Carnegie Mellon University, Stanford University, and Shanghai Jiao Tong University</p>
                     </div>
                     <div class="credential-card">
                         <div class="credential-icon">🌐</div>
                         <h4>Tech Industry Veterans</h4>
-                        <p>AI researchers from NVIDIA, Google, Apple, and Baidu Research labs with years of cutting-edge experience</p>
+                        <p>AI researchers from NVIDIA, Google, Apple, Baidu Research, and Carnegie Mellon University with years of cutting-edge experience</p>
                     </div>
                     <div class="credential-card">
                         <div class="credential-icon">🎨</div>
@@ -1180,14 +1195,17 @@
             <!-- Our Story -->
             <div class="team-story-container" style="display: flex; justify-content: space-between; gap: 40px;">
                 <!-- Video Section -->
-                <div class="team-story">
-                    <h3>New Section Title</h3>
-                    <p>Your content goes here. This can be any information or features you want to highlight next to the Our Story section.</p>
+                <div style="aspect-ratio: 1 / 1; width: 100%; max-width: 400px; display: flex; align-items: center; justify-content: center;">
+                    <video controls loop muted autoplay style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                        <source src="assets/videos/demo.mov" type="video/quicktime">
+                        <source src="assets/videos/demo.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
                 <!-- Our Story -->
                 <div class="team-story">
                     <h3>Our Story</h3>
-                    <p>We've known each other for nearly ten years, working together at top AI labs like NVIDIA, Google, and Baidu Research. Along the way, we've built cutting-edge AI systems, published research, and shipped products used by millions.</p>
+                    <p>We've known each other for nearly ten years, working together at top AI labs and universities like Carnegie Mellon University, Stanford, NVIDIA, Google, Baidu Research, and Apple Special Projects Group (SPG). Along the way, we've built cutting-edge AI systems, published research, and shipped products used by millions.</p>
                     <p>But we've always shared a bigger dream: <strong>What if we could create the kind of learning experience we wished for as kids?</strong></p>
                     <p>This isn't just another coding school. It's a passion project from a team that's been at the forefront of AI and robotics, now dedicated to making that same technology accessible and magical for the next generation.</p>
                 </div>
@@ -1201,7 +1219,7 @@
             <p class="section-label">Our Philosophy</p>
             <h2>Learning That Feels Like Magic</h2>
             <p class="section-description">
-                We believe the most powerful learning happens when kids are immersed in play, curiosity, and creative challenge. That’s why our curriculum is designed to feel like discovery, not instruction—backed by research, and built for joy.
+                We believe the most powerful learning happens when kids are immersed in play, curiosity, and creative challenge. That's why our curriculum is designed to feel like discovery, not instruction—backed by research, and built for joy.
             </p>
         </div>
 
@@ -1237,7 +1255,7 @@
     <section id="registration" class="section" style="background: var(--secondary);">
         <div class="section-header">
             <p class="section-label">Class Registration</p>
-            <h2>Let’s Build! Register Now</h2>
+            <h2>Let's Build! Register Now</h2>
             <p class="section-description">Fill out the short form below to secure a spot or join the waitlist.</p>
         </div>
         <form action="https://formspree.io/f/xqabbeeb" method="POST" style="max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
@@ -1275,7 +1293,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h3>Genboo Robotics</h3>
-                    <p>Immersive AI & robotics programs empower kids to become tomorrow’s makers, thinkers, and leaders.</p>
+                    <p>Immersive AI & robotics programs empower kids to become tomorrow's makers, thinkers, and leaders.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Programs</h4>
@@ -1317,6 +1335,12 @@
                     });
                 }
             });
+        });
+
+        // Smooth scroll to top when clicking the logo
+        document.getElementById('logo-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
