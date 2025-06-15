@@ -150,9 +150,12 @@
             max-width: 1440px;
             margin: 0 auto;
             padding: 40px 0;
-            text-align: left;
+            text-align: center;
             z-index: 2;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero-label {
@@ -182,6 +185,15 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 64px !important;
+                line-height: 1.1;
+                width: 80%;
+                display: block;
+            }
+        }
+
         .hero h1 .gradient-text {
             background: linear-gradient(135deg, #4A90E2 0%, #7B68EE 100%);
             -webkit-background-clip: text;
@@ -194,6 +206,7 @@
             line-height: 1.5;
             color: rgba(255, 255, 255, 0.9);
             max-width: 680px;
+            text-align: center;
             margin: 0 auto 64px;
             animation: fadeInUp 0.8s ease 0.2s both;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -201,7 +214,7 @@
 
         .hero-actions {
             display: flex;
-            gap: 48px;
+            gap: 32px;
             justify-content: center;
             animation: fadeInUp 0.8s ease 0.3s both;
         }
@@ -233,6 +246,8 @@
             border-radius: 100px;
             font-weight: 600;
             font-size: 16px;
+            display: inline-flex;
+            align-items: center;
             transition: all 0.2s ease;
             border: 1px solid rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
@@ -335,7 +350,7 @@
 
         .class-card-header {
             background: var(--secondary);
-            padding: 48px 40px;
+            padding: 48px 24px;
             text-align: center;
             border-bottom: 1px solid var(--border);
         }
@@ -354,7 +369,7 @@
         }
 
         .class-card h3 {
-            font-size: 24px;
+            font-size: 32px;
             font-weight: 600;
             letter-spacing: -0.02em;
             color: var(--text-primary);
@@ -413,6 +428,14 @@
             border-top: 1px solid var(--border);
         }
 
+        @media (max-width: 768px) {
+            .class-action {
+                flex-direction: column; /* Stack items vertically */
+                align-items: center; /* Align items to the start */
+                gap: 16px; /* Add some space between the rows */
+            }
+        }
+
         .class-price {
             font-size: 24px;
             font-weight: 600;
@@ -453,7 +476,7 @@
         .company-text-bar {
             text-align: center;
             margin-bottom: 60px;
-            padding: 40px;
+            padding: 48px 16px;
             background: white;
             border-radius: 16px;
             border: 1px solid var(--border);
@@ -489,7 +512,7 @@
             font-weight: 500;
             color: var(--text-secondary);
             letter-spacing: -0.01em;
-            display: inline-block;
+            display: flex;
             vertical-align: middle;
             white-space: nowrap;
             margin: 0;
@@ -502,9 +525,9 @@
         }
 
         .separator {
-            color: var(--border);
+            color: gray;
             font-weight: 300;
-            margin: 0 32px;
+            margin: 0 24px;
         }
 
         .credentials-grid {
@@ -581,8 +604,14 @@
             color: var(--text-secondary);
         }
 
+        .team-story-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
         .team-story {
-            width: auto;
+            width: 100%;
             padding: 60px;
             background: white;
             border-radius: 20px;
@@ -946,6 +975,36 @@
             line-height: 1;
             display: block;
         }
+
+        .team-story-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .team-story-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .team-story {
+                width: 100%;
+                text-align: center;
+                padding: 40px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: white;
+            }
+
+            /* Optional: Adjust video size */
+            .team-story-container video {
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1172,7 +1231,7 @@
             <!-- Our Story -->
             <div class="team-story-container" style="display: flex; justify-content: space-between; gap: 40px;">
                 <!-- Video Section -->
-                <div style="aspect-ratio: 1 / 1; width: 100%; max-width: 400px; display: flex; align-items: center; justify-content: center;">
+                <div style="aspect-ratio: 1 / 1; width: 100%; max-width: 500px; display: flex; align-items: center; justify-content: center;">
                     <video controls loop muted autoplay style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
                         <source src="assets/videos/demo.mov" type="video/quicktime">
                         <source src="assets/videos/demo.mov" type="video/mp4">
