@@ -1300,7 +1300,7 @@
         <div class="container">
             <div class="team-story-container">
                 <div class="video-wrapper video-hero">
-                    <video id="heroVideo" loop muted autoplay playsinline controls style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                    <video id="heroVideo" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
                         <source src="assets/videos/hero-background.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -1319,20 +1319,18 @@
                     </p>
                 </div>
                 <div class="video-wrapper video-demo1">
-                    <video id="demoVideo1" loop muted autoplay playsinline controls style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                    <video id="demoVideo1" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
                         <source src="assets/videos/demo.mov" type="video/quicktime">
                         <source src="assets/videos/demo.mov" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <button id="playDemoBtn1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
                 </div>
                 <div class="video-wrapper video-demo2">
-                    <video id="demoVideo2" loop muted autoplay playsinline controls style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                    <video id="demoVideo2" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
                         <source src="assets/videos/demo2.mov" type="video/quicktime">
                         <source src="assets/videos/demo2.mov" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <button id="playDemoBtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
                 </div>
             </div>
         </div>
@@ -1516,23 +1514,6 @@
                 }, 5000); // Change frame every 5 seconds
             }
         }
-
-        // Add JavaScript for the demo video play buttons
-        document.getElementById('playDemoBtn1').addEventListener('click', function() {
-            document.getElementById('demoVideo1').play();
-            this.style.display = 'none';
-        });
-        document.getElementById('demoVideo1').addEventListener('playing', function() {
-            document.getElementById('playDemoBtn1').style.display = 'none';
-        });
-
-        document.getElementById('playDemoBtn2').addEventListener('click', function() {
-            document.getElementById('demoVideo2').play();
-            this.style.display = 'none';
-        });
-        document.getElementById('demoVideo2').addEventListener('playing', function() {
-            document.getElementById('playDemoBtn2').style.display = 'none';
-        });
     </script>
 </body>
 </html>
