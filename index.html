@@ -1310,16 +1310,29 @@
             <div class="team-story-container" style="display: flex; justify-content: space-between; gap: 40px;">
                 <!-- Video Section -->
                 <div style="display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 500px; align-items: center; justify-content: center;">
-                    <video loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
-                        <source src="assets/videos/demo.mov" type="video/quicktime">
-                        <source src="assets/videos/demo.mov" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <video loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
-                        <source src="assets/videos/demo2.mov" type="video/quicktime">
-                        <source src="assets/videos/demo2.mov" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="video-wrapper" style="position: relative; width: 100%; height: 100%;">
+                        <video id="heroVideo" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                            <source src="assets/videos/hero-background.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button id="playHeroBtn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
+                    </div>
+                    <div class="video-wrapper" style="position: relative; width: 100%; height: 100%;">
+                        <video id="demoVideo1" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                            <source src="assets/videos/demo.mov" type="video/quicktime">
+                            <source src="assets/videos/demo.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button id="playDemoBtn1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
+                    </div>
+                    <div class="video-wrapper" style="position: relative; width: 100%; height: 100%;">
+                        <video id="demoVideo2" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                            <source src="assets/videos/demo2.mov" type="video/quicktime">
+                            <source src="assets/videos/demo2.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button id="playDemoBtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
+                    </div>
                 </div>
                 <!-- Our Story -->
                 <div class="team-story">
@@ -1483,6 +1496,58 @@
                 mobileMenu.style.display = 'none';
                 menuOpen = false;
             });
+        });
+
+        // Update JavaScript for WeChat detection and sequential frame display
+        function isWeChat() {
+            return /micromessenger/i.test(navigator.userAgent);
+        }
+
+        if (isWeChat()) {
+            const frames = [
+                'assets/images/hero-bg-1.jpg',
+                'assets/images/hero-bg-2.jpg',
+                'assets/images/hero-bg-3.jpg',
+                'assets/images/hero-bg-4.jpg',
+                'assets/images/hero-bg-5.jpg',
+                'assets/images/hero-bg-6.jpg'
+            ];
+            let currentFrameIndex = 0;
+            const videoBgContainer = document.querySelector('.video-background');
+            if (videoBgContainer) {
+                videoBgContainer.innerHTML = `<img src="${frames[currentFrameIndex]}" alt="Background" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">` +
+                    '<div class="video-overlay"></div>';
+                setInterval(() => {
+                    currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+                    videoBgContainer.querySelector('img').src = frames[currentFrameIndex];
+                }, 5000); // Change frame every 5 seconds
+            }
+        }
+
+        // Add JavaScript for the demo video play buttons
+        document.getElementById('playDemoBtn1').addEventListener('click', function() {
+            document.getElementById('demoVideo1').play();
+            this.style.display = 'none';
+        });
+        document.getElementById('demoVideo1').addEventListener('playing', function() {
+            document.getElementById('playDemoBtn1').style.display = 'none';
+        });
+
+        document.getElementById('playDemoBtn2').addEventListener('click', function() {
+            document.getElementById('demoVideo2').play();
+            this.style.display = 'none';
+        });
+        document.getElementById('demoVideo2').addEventListener('playing', function() {
+            document.getElementById('playDemoBtn2').style.display = 'none';
+        });
+
+        // Add JavaScript for the hero video play button
+        document.getElementById('playHeroBtn').addEventListener('click', function() {
+            document.getElementById('heroVideo').play();
+            this.style.display = 'none';
+        });
+        document.getElementById('heroVideo').addEventListener('playing', function() {
+            document.getElementById('playHeroBtn').style.display = 'none';
         });
     </script>
 </body>
