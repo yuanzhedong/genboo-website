@@ -486,53 +486,45 @@
             overflow: hidden;
         }
 
-        .company-names-roller {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            height: 64px;
-            display: flex;
-            align-items: center;
-        }
-
-        .company-names-inner {
-            display: flex;
-            vertical-align: middle;
-            white-space: nowrap;
-            animation: company-scroll 30s linear infinite;
-        }
-
-        @keyframes company-scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
         .company-names {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            letter-spacing: -0.01em;
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px 24px;
+            justify-items: center;
             align-items: center;
-            white-space: nowrap;
-            margin: 0;
-            padding: 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        @media (max-width: 600px) {
+            .company-names {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px 12px;
+            }
+            .company-logo {
+                height: 48px;
+                margin: 0 8px 16px 8px;
+            }
+        }
+        .company-logo {
+            height: 80px;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 32px auto;
+            vertical-align: middle;
+            justify-content: center;
+            transition: transform 0.2s;
         }
 
-        .company-names span:not(.separator) {
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-right: 24px;
+        .company-logo:hover {
+            transform: scale(1.1);
         }
 
         .separator {
             color: gray;
             font-weight: 300;
-            margin: 0 24px;
+            margin: 0 10px;
+            font-size: 18px;
         }
 
         .credentials-grid {
@@ -610,36 +602,79 @@
         }
 
         .team-story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 40px;
             max-width: 90%;
             margin: 0 auto 80px;
-            gap: 40px;
+        }
+        @media (max-width: 900px) {
+            .team-story-container {
+                display: block;
+            }
+            .team-story,
+            .video-wrapper {
+                margin-bottom: 32px;
+                width: 100%;
+                max-width: 100%;
+            }
+            .team-story:last-child,
+            .video-wrapper:last-child {
+                margin-bottom: 0;
+            }
         }
 
         .team-story {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
             width: 100%;
-            padding: 60px;
+            padding: 48px 40px 40px 40px;
             background: white;
             border-radius: 20px;
             border: 1px solid var(--border);
             text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
-
+        .team-story-label {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
         .team-story h3 {
-            font-size: 32px;
-            font-weight: 600;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--accent);
             margin-bottom: 24px;
+        }
+        .team-story-description {
+            font-size: 20px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .team-story strong {
+            font-weight: 700;
             color: var(--text-primary);
         }
-
-        .team-story p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
+        .video-hero {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
         }
-
-        .team-story p:last-child {
-            margin-bottom: 0;
+        .video-demo1 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+        .video-demo2 {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
         }
 
         /* Feature Section */
@@ -981,54 +1016,26 @@
             display: block;
         }
 
-        .team-story-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        /* Media query for mobile devices */
-        @media (max-width: 768px) {
-            .team-story-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-
-            .team-story {
-                width: 100%;
-                text-align: center;
-                padding: 40px;
-                border: 1px solid var(--border);
-                border-radius: 12px;
-                background: white;
-            }
-
-            /* Optional: Adjust video size */
-            .team-story-container video {
-                width: 100%;
-                height: auto;
-            }
-        }
-
         .company-logo {
-            display: flex;
-            height: 64px; /* Set a height for the logos */
-            margin: 0 24px; /* Add horizontal margin for spacing */
-            vertical-align: middle; /* Align logos vertically */
+            height: 80px;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 32px auto;
+            vertical-align: middle;
             justify-content: center;
-            transition: transform 0.2s; /* Add a transition for hover effect */
+            transition: transform 0.2s;
         }
 
         .company-logo:hover {
-            transform: scale(1.1); /* Slightly enlarge the logo on hover */
+            transform: scale(1.1);
         }
 
         .separator {
-            color: gray; /* Ensure this is visible */
+            color: gray;
             font-weight: 300;
-            margin: 0 10px; /* Adjust this value for spacing */
-            font-size: 18px; /* Ensure the font size is appropriate */
+            margin: 0 10px;
+            font-size: 18px;
         }
 
         .mobile-menu {
@@ -1165,27 +1172,14 @@
             <!-- Company Credentials -->
             <div class="credentials-showcase">
                 <div class="company-text-bar">
-                    <div class="company-names-roller">
-                        <div class="company-names-inner">
-                            <div class="company-names">
-                                <img src="assets/images/nvidia-logo.png" alt="NVIDIA" class="company-logo" style="height: 24px;">
-                                <img src="assets/images/google-logo.png" alt="Google" class="company-logo" style="height: 32px;">
-                                <img src="assets/images/baidu-logo.png" alt="Baidu Research" class="company-logo" style="height: 54px;">
-                                <img src="assets/images/stanford-logo.png" alt="Stanford University" class="company-logo" style="height: 48px;">
-                                <img src="assets/images/cmu-logo.png" alt="Carnegie Mellon University" class="company-logo" style="height: 20px;">
-                                <img src="assets/images/sjtu-logo.png" alt="Shanghai Jiao Tong University" class="company-logo" style="height: 48px;">
-                                <img src="assets/images/thu-logo.png" alt="Tsinghua University" class="company-logo" style="height: 108px;">
-                            </div>
-                            <div class="company-names">
-                                <img src="assets/images/nvidia-logo.png" alt="NVIDIA" class="company-logo" style="height: 24px;">
-                                <img src="assets/images/google-logo.png" alt="Google" class="company-logo" style="height: 32px;">
-                                <img src="assets/images/baidu-logo.png" alt="Baidu Research" class="company-logo" style="height: 54px;">
-                                <img src="assets/images/stanford-logo.png" alt="Stanford University" class="company-logo" style="height: 48px;">
-                                <img src="assets/images/cmu-logo.png" alt="Carnegie Mellon University" class="company-logo" style="height: 20px;">
-                                <img src="assets/images/sjtu-logo.png" alt="Shanghai Jiao Tong University" class="company-logo" style="height: 48px;">
-                                <img src="assets/images/thu-logo.png" alt="Tsinghua University" class="company-logo" style="height: 108px;">
-                            </div>
-                        </div>
+                    <div class="company-names">
+                        <img src="assets/images/nvidia-logo.png" alt="NVIDIA" class="company-logo">
+                        <img src="assets/images/google-logo.png" alt="Google" class="company-logo">
+                        <img src="assets/images/baidu-logo.png" alt="Baidu Research" class="company-logo">
+                        <img src="assets/images/stanford-logo.png" alt="Stanford University" class="company-logo">
+                        <img src="assets/images/cmu-logo.png" alt="Carnegie Mellon University" class="company-logo">
+                        <img src="assets/images/sjtu-logo.png" alt="Shanghai Jiao Tong University" class="company-logo">
+                        <img src="assets/images/thu-logo.png" alt="Tsinghua University" class="company-logo">
                     </div>
                 </div>
 
@@ -1307,39 +1301,41 @@
     <!-- Our Story Section -->
     <section class="section" style="background: var(--secondary);">
         <div class="container">
-            <div class="team-story-container" style="display: flex; justify-content: space-between; gap: 40px;">
-                <!-- Video Section -->
-                <div style="display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 500px; align-items: center; justify-content: center;">
-                    <div class="video-wrapper" style="position: relative; width: 100%; height: 100%;">
-                        <video id="heroVideo" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
-                            <source src="assets/videos/hero-background.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <button id="playHeroBtn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
-                    </div>
-                    <div class="video-wrapper" style="position: relative; width: 100%; height: 100%;">
-                        <video id="demoVideo1" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
-                            <source src="assets/videos/demo.mov" type="video/quicktime">
-                            <source src="assets/videos/demo.mov" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <button id="playDemoBtn1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
-                    </div>
-                    <div class="video-wrapper" style="position: relative; width: 100%; height: 100%;">
-                        <video id="demoVideo2" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
-                            <source src="assets/videos/demo2.mov" type="video/quicktime">
-                            <source src="assets/videos/demo2.mov" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <button id="playDemoBtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
-                    </div>
+            <div class="team-story-container">
+                <div class="video-wrapper video-hero">
+                    <video id="heroVideo" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                        <source src="assets/videos/hero-background.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-                <!-- Our Story -->
                 <div class="team-story">
-                    <h3>Our Story</h3>
-                    <p>We've known each other for nearly ten years, working together at top AI labs and universities like Carnegie Mellon University, Stanford, NVIDIA, Google, Baidu Research, and Apple Special Projects Group (SPG). Along the way, we've built cutting-edge AI systems, published research, and shipped products used by millions.</p>
-                    <p>But we've always shared a bigger dream: <strong>What if we could create the kind of learning experience we wished for as kids?</strong></p>
-                    <p>This isn't just another coding school. It's a passion project from a team that's been at the forefront of AI and robotics, now dedicated to making that same technology accessible and magical for the next generation.</p>
+                    <div class="team-story-label">Our Story</div>
+                    <h3>Building Together for the Next Generation</h3>
+                    <p class="team-story-description">
+                        We've known each other for nearly ten years, working together at top AI labs and universities like Carnegie Mellon University, Stanford, NVIDIA, Google, Baidu Research, and Apple Special Projects Group (SPG). Along the way, we've built cutting-edge AI systems, published research, and shipped products used by millions.
+                    </p>
+                    <p class="team-story-description">
+                        But we've always shared a bigger dream: <strong>What if we could create the kind of learning experience we wished for as kids?</strong>
+                    </p>
+                    <p class="team-story-description">
+                        This isn't just another coding school. It's a passion project from a team that's been at the forefront of AI and robotics, now dedicated to making that same technology accessible and magical for the next generation.
+                    </p>
+                </div>
+                <div class="video-wrapper video-demo1">
+                    <video id="demoVideo1" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                        <source src="assets/videos/demo.mov" type="video/quicktime">
+                        <source src="assets/videos/demo.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button id="playDemoBtn1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
+                </div>
+                <div class="video-wrapper video-demo2">
+                    <video id="demoVideo2" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                        <source src="assets/videos/demo2.mov" type="video/quicktime">
+                        <source src="assets/videos/demo2.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button id="playDemoBtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
                 </div>
             </div>
         </div>
@@ -1539,15 +1535,6 @@
         });
         document.getElementById('demoVideo2').addEventListener('playing', function() {
             document.getElementById('playDemoBtn2').style.display = 'none';
-        });
-
-        // Add JavaScript for the hero video play button
-        document.getElementById('playHeroBtn').addEventListener('click', function() {
-            document.getElementById('heroVideo').play();
-            this.style.display = 'none';
-        });
-        document.getElementById('heroVideo').addEventListener('playing', function() {
-            document.getElementById('playHeroBtn').style.display = 'none';
         });
     </script>
 </body>
