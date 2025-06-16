@@ -1299,11 +1299,13 @@
     <section class="section" style="background: var(--secondary);">
         <div class="container">
             <div class="team-story-container">
-                <div class="video-wrapper video-hero">
-                    <video id="heroVideo" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
-                        <source src="assets/videos/hero-background.mp4" type="video/mp4">
+                <div class="video-wrapper video-hero" style="position:relative;">
+                    <video id="demoVideo3" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
+                        <source src="assets/videos/demo3.mov" type="video/quicktime">
+                        <source src="assets/videos/demo3.mov" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <button id="playDemoBtn3" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
                 </div>
                 <div class="team-story">
                     <div class="team-story-label">Our Story</div>
@@ -1318,19 +1320,21 @@
                         This isn't just another coding school. It's a passion project from a team that's been at the forefront of AI and robotics, now dedicated to making that same technology accessible and magical for the next generation.
                     </p>
                 </div>
-                <div class="video-wrapper video-demo1">
+                <div class="video-wrapper video-demo1" style="position:relative;">
                     <video id="demoVideo1" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
                         <source src="assets/videos/demo.mov" type="video/quicktime">
                         <source src="assets/videos/demo.mov" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <button id="playDemoBtn1" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
                 </div>
-                <div class="video-wrapper video-demo2">
+                <div class="video-wrapper video-demo2" style="position:relative;">
                     <video id="demoVideo2" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
                         <source src="assets/videos/demo2.mov" type="video/quicktime">
                         <source src="assets/videos/demo2.mov" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <button id="playDemoBtn2" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
                 </div>
             </div>
         </div>
@@ -1512,6 +1516,39 @@
                     currentFrameIndex = (currentFrameIndex + 1) % frames.length;
                     videoBgContainer.querySelector('img').src = frames[currentFrameIndex];
                 }, 5000); // Change frame every 5 seconds
+            }
+            // Show play button overlays for all three demo videos only in WeChat
+            var playBtn1 = document.getElementById('playDemoBtn1');
+            var playBtn2 = document.getElementById('playDemoBtn2');
+            var playBtn3 = document.getElementById('playDemoBtn3');
+            if (playBtn1 && playBtn2 && playBtn3) {
+                playBtn1.style.display = 'block';
+                playBtn2.style.display = 'block';
+                playBtn3.style.display = 'block';
+                playBtn1.addEventListener('click', function() {
+                    var video1 = document.getElementById('demoVideo1');
+                    video1.play();
+                    playBtn1.style.display = 'none';
+                });
+                document.getElementById('demoVideo1').addEventListener('playing', function() {
+                    playBtn1.style.display = 'none';
+                });
+                playBtn2.addEventListener('click', function() {
+                    var video2 = document.getElementById('demoVideo2');
+                    video2.play();
+                    playBtn2.style.display = 'none';
+                });
+                document.getElementById('demoVideo2').addEventListener('playing', function() {
+                    playBtn2.style.display = 'none';
+                });
+                playBtn3.addEventListener('click', function() {
+                    var video3 = document.getElementById('demoVideo3');
+                    video3.play();
+                    playBtn3.style.display = 'none';
+                });
+                document.getElementById('demoVideo3').addEventListener('playing', function() {
+                    playBtn3.style.display = 'none';
+                });
             }
         }
     </script>
