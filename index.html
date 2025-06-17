@@ -439,15 +439,25 @@
         }
 
         .class-price {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 600;
-            color: var(--text-primary);
+            margin-bottom: 8px;
         }
 
         .class-price span {
-            font-size: 14px;
+            font-size: 15px;
+            color: var(--text-secondary);
             font-weight: 400;
-            color: var(--text-tertiary);
+        }
+
+        .class-bundle {
+            font-size: 16px;
+            color: var(--text-primary);
+            background: #f5f5fa;
+            border-radius: 8px;
+            padding: 8px 16px;
+            display: inline-block;
+            font-weight: 600;
         }
 
         /* Team Section */
@@ -1247,8 +1257,11 @@
                         <a href="https://www.vexrobotics.com/123" target="_blank" rel="noopener" style="margin-left: 8px; font-weight: 600; color: var(--accent); text-decoration: underline;">Learn More</a>
                     </p>
                     <div class="class-action">
-                        <div class="class-price">
-                            $99 <span>/ session</span>
+                        <div class="class-price" style="display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 16px;">
+                          <div style="font-size: 2rem; color: var(--accent); font-weight: 700; margin-bottom: 2px;">$99</div>
+                          <div style="font-size: 1rem; color: var(--text-secondary); font-weight: 400;">
+                            per lesson <span style="color: #bbb;">|</span> 9 lessons total <span style="color: #bbb;">|</span> $800 for all 9 lessons
+                          </div>
                         </div>
                         <a href="#registration" class="btn-primary">Enroll Now</a>
                     </div>
@@ -1282,7 +1295,7 @@
                         </div>
                     </div>
                     <p class="class-description">
-                        Dive into the world of artificial intelligence. Build chatbots, train models, and create AI-powered projects that solve real problems for young learners.
+                        Dive into the world of artificial intelligence. Build chatbots, train models, and create AI-powered projects that solve real problems for young learners. Explore the future of technology with us.
                     </p>
                     <div class="class-action">
                         <div class="class-price">
