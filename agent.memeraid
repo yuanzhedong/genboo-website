@@ -1,0 +1,32 @@
+%%{init: {'theme':'base', 'themeVariables': {'primaryBkgColor':'#ffffff', 'primaryTextColor':'#000000', 'primaryBorderColor':'#000000', 'lineColor':'#000000', 'secondaryBkgColor':'#ffffff', 'tertiaryBkgColor':'#ffffff'}}}%%
+flowchart LR
+
+  %% Student
+  subgraph S["Student Device"]
+    DEV["Embodied Device<br/>(UI + Sensors)"]
+  end
+
+  %% Teacher Portal
+  subgraph T["Teacher Portal"]
+    TP["Teacher Dashboard<br/>(Upload student info, lessons, curriculum, prompts, etc)"]
+  end
+
+  %% Cloud
+  subgraph C["Cloud AI Platform"]
+    API["API Gateway"]
+    AGENTS["AI Agents<br/>(Personalized Teacher · Teachable Agents for each student)"]
+    DATA["Learning Data<br/>(Logs + Student Model)"]
+    KB["Curriculum Store"]
+  end
+
+  %% Student interaction loop
+  DEV -->|"student interaction"| API --> AGENTS --> DEV
+
+  %% Teacher inputs (content & configuration)
+  TP -->|"teaching content & policies"| API
+  API --> KB
+  AGENTS --> KB
+
+  %% Teacher outputs (insights & feedback)
+  AGENTS --> DATA
+  DATA --> TP
