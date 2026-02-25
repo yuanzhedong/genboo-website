@@ -358,6 +358,14 @@ KEY CHANGES:
             transition: all 0.3s ease;
         }
 
+        .grade-section-build {
+            min-height: 180px;
+        }
+
+        .grade-section-offer {
+            min-height: 220px;
+        }
+
         .grade-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
@@ -474,63 +482,42 @@ KEY CHANGES:
         /* Competition Team Cards */
         .competition-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto 40px;
         }
 
         .competition-block {
             background: white;
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
-            transition: all 0.3s ease;
+            padding: 48px 32px;
+            transition: background 0.3s ease;
         }
 
         .competition-block:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-            border-color: var(--accent);
+            background: var(--hover);
         }
 
         .competition-block h4 {
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
-        .competition-block ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .competition-block li {
-            font-size: 15px;
+        .competition-block p {
+            font-size: 16px;
             color: var(--text-secondary);
-            padding: 6px 0;
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-        }
-
-        .competition-block li::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            flex-shrink: 0;
-            position: relative;
-            top: -2px;
+            line-height: 1.6;
         }
 
         .competition-goals {
             background: white;
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 32px;
+            padding: 48px 32px;
+            max-width: 1200px;
+            margin: 0 auto 32px;
         }
 
         .competition-goals h4 {
@@ -548,8 +535,9 @@ KEY CHANGES:
 
         .competition-actions {
             display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .btn-light {
@@ -595,8 +583,8 @@ KEY CHANGES:
         /* Learning Approach Section */
         .approach-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
             max-width: 1200px;
             margin: 0 auto 60px;
         }
@@ -604,39 +592,23 @@ KEY CHANGES:
         .approach-card {
             background: white;
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s ease;
+            padding: 48px 32px;
+            transition: background 0.3s ease;
         }
 
         .approach-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
-        }
-
-        .approach-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--accent);
-            color: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 20px;
+            background: var(--hover);
         }
 
         .approach-card h4 {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 12px;
         }
 
         .approach-card p {
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.6;
             color: var(--text-secondary);
         }
@@ -683,54 +655,34 @@ KEY CHANGES:
         /* Outcomes Section */
         .outcomes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto 60px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .outcome-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 24px;
             background: white;
-            border-radius: 12px;
             border: 1px solid var(--border);
-            transition: all 0.2s ease;
+            padding: 48px 32px;
+            transition: background 0.3s ease;
         }
 
         .outcome-item:hover {
-            border-color: var(--accent);
-            transform: translateX(4px);
+            background: var(--hover);
         }
 
-        .outcome-check {
-            width: 24px;
-            height: 24px;
-            background: var(--success);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            position: relative;
-        }
-
-        .outcome-check::after {
-            content: "";
-            width: 6px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-            margin-bottom: 2px;
+        .outcome-item h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
         }
 
         .outcome-item p {
             font-size: 16px;
+            line-height: 1.6;
             color: var(--text-secondary);
-            line-height: 1.5;
         }
 
         .showcase-section {
@@ -835,35 +787,19 @@ KEY CHANGES:
         .credentials-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-bottom: 48px;
+            gap: 0;
+            margin-bottom: 0;
         }
 
         .credential-card {
             background: white;
-            border-radius: 16px;
-            padding: 32px;
+            padding: 48px 32px;
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
+            transition: background 0.3s ease;
         }
 
         .credential-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        .credential-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--accent);
-            color: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
+            background: var(--hover);
         }
 
         .credential-card h4 {
@@ -874,7 +810,7 @@ KEY CHANGES:
         }
 
         .credential-card p {
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.6;
             color: var(--text-secondary);
         }
@@ -882,25 +818,29 @@ KEY CHANGES:
         .team-values {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 0;
         }
 
         .team-value {
             background: white;
-            border-radius: 16px;
-            padding: 32px;
+            padding: 48px 32px;
             border: 1px solid var(--border);
+            transition: background 0.3s ease;
+        }
+
+        .team-value:hover {
+            background: var(--hover);
         }
 
         .team-value h4 {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 12px;
         }
 
         .team-value p {
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.6;
             color: var(--text-secondary);
         }
@@ -1326,7 +1266,15 @@ KEY CHANGES:
             }
 
             .team-values {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .approach-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .outcomes-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .footer-grid {
@@ -1588,7 +1536,7 @@ KEY CHANGES:
                 </div>
                 <div class="team-value">
                     <h4>Safety & Supervision</h4>
-                    <p>Small groups with 1:4 ratios. Background-checked staff. Clear protocols for tools and equipment. Your child's safety is non-negotiable.</p>
+                    <p>Small groups with 1:4 ratios. Clear protocols for tools and equipment. Your child's safety is non-negotiable.</p>
                 </div>
             </div>
         </div>
@@ -1723,7 +1671,7 @@ KEY CHANGES:
                         <span class="grade-detail">1:4 ratio</span>
                         <span class="grade-detail">60 min each</span>
                     </div>
-                    <div class="grade-section">
+                    <div class="grade-section grade-section-build">
                         <p class="grade-section-title">What Kids Build</p>
                         <ul>
                             <li>Simple wheeled robots with basic steering</li>
@@ -1755,7 +1703,7 @@ KEY CHANGES:
                         <span class="grade-detail">1:4 ratio</span>
                         <span class="grade-detail">60 min each</span>
                     </div>
-                    <div class="grade-section">
+                    <div class="grade-section grade-section-build">
                         <p class="grade-section-title">What Kids Build</p>
                         <ul>
                             <li>Robots with sensors (touch, distance)</li>
@@ -1785,9 +1733,9 @@ KEY CHANGES:
                     </div>
                     <div class="grade-details">
                         <span class="grade-detail">1:4 ratio</span>
-                        <span class="grade-detail">60 min each</span>
+                        <span class="grade-detail">90 min each</span>
                     </div>
-                    <div class="grade-section">
+                    <div class="grade-section grade-section-build">
                         <p class="grade-section-title">What Kids Build</p>
                         <ul>
                             <li>Multi-motor robots with gear trains</li>
@@ -1823,50 +1771,24 @@ KEY CHANGES:
         <div class="competition-grid">
             <div class="competition-block">
                 <h4>Weekly Rhythm</h4>
-                <ul>
-                    <li>Regular weekly training (1.5 hrs)</li>
-                    <li>Extra practice week-of tournaments (1 hr/day)</li>
-                </ul>
+                <p>Regular weekly training (1.5 hrs). Extra practice week-of tournaments (1 hr/day).</p>
             </div>
             <div class="competition-block">
                 <h4>What We Expect</h4>
-                <ul>
-                    <li>Attendance commitment through the season</li>
-                    <li>Engineering notebook entries</li>
-                    <li>Team roles: builder, programmer, driver</li>
-                    <li>Sportsmanship and collaboration</li>
-                </ul>
+                <p>Attendance commitment through the season. Engineering notebook entries. Team roles: builder, programmer, driver. Sportsmanship and collaboration.</p>
             </div>
             <div class="competition-block">
                 <h4>Tournament Schedule</h4>
-                <ul>
-                    <li>At least one local tournament per month (availability permitting)</li>
-                    <li>Tournaments usually on Saturdays</li>
-                    <li>Regional championship push in Feb</li>
-                </ul>
+                <p>At least one local tournament per month. Tournaments usually on Saturdays. Regional championship push in Feb.</p>
             </div>
             <div class="competition-block">
                 <h4>Onboarding</h4>
-                <ul>
-                    <li>Tryout or assessment session</li>
-                    <li>Parent orientation meeting</li>
-                    <li>Commitment agreement</li>
-                </ul>
+                <p>Tryout or assessment session. Parent orientation meeting. Commitment agreement.</p>
             </div>
-        </div>
-
-        <div class="competition-goals">
-            <h4>Season Goals</h4>
-            <p>
-                <strong>Aug–Sep:</strong> Build a reliable robot, qualify at local tournaments.<br>
-                <strong>Oct–Jan:</strong> Iterate, improve autonomous routines, climb local rankings.<br>
-                <strong>Feb:</strong> Compete for a spot at regionals.
-            </p>
         </div>
 
         <div class="competition-actions">
             <a href="#register" class="btn-light">Apply / Join Waitlist</a>
-            <a href="mailto:hello@genboo.com?subject=Competition Team Inquiry" class="btn-ghost">Book a 1:1 Call</a>
         </div>
     </section>
 
@@ -1889,7 +1811,7 @@ KEY CHANGES:
                             <span class="grade-badge">Hourly Sessions</span>
                         </div>
                     </div>
-                    <div class="grade-section">
+                    <div class="grade-section grade-section-offer">
                         <p class="grade-section-title">What We Offer</p>
                         <ul>
                             <li>Robot debugging and troubleshooting</li>
@@ -1916,7 +1838,7 @@ KEY CHANGES:
                             <span class="grade-badge">Package Available</span>
                         </div>
                     </div>
-                    <div class="grade-section">
+                    <div class="grade-section grade-section-offer">
                         <p class="grade-section-title">What We Offer</p>
                         <ul>
                             <li>Season planning and goal-setting</li>
@@ -1941,7 +1863,7 @@ KEY CHANGES:
                             <span class="grade-badge">Group Sessions</span>
                         </div>
                     </div>
-                    <div class="grade-section">
+                    <div class="grade-section grade-section-offer">
                         <p class="grade-section-title">What We Offer</p>
                         <ul>
                             <li>Parent training sessions</li>
@@ -1980,28 +1902,28 @@ KEY CHANGES:
 
         <div class="outcomes-grid">
             <div class="outcome-item">
-                <div class="outcome-check"></div>
-                <p>Master robotic mechanisms: power transmission, drivetrain design, and motor control</p>
+                <h4>Robotic Mechanisms</h4>
+                <p>Power transmission, drivetrain design, and motor control fundamentals.</p>
             </div>
             <div class="outcome-item">
-                <div class="outcome-check"></div>
-                <p>Write autonomous routines using sensors—not just button-mashing</p>
+                <h4>Autonomous Programming</h4>
+                <p>Write routines using sensors—not just button-mashing.</p>
             </div>
             <div class="outcome-item">
-                <div class="outcome-check"></div>
-                <p>Explain design decisions with evidence ("I chose this because...")</p>
+                <h4>Design Reasoning</h4>
+                <p>Explain decisions with evidence ("I chose this because...").</p>
             </div>
             <div class="outcome-item">
-                <div class="outcome-check"></div>
-                <p>Debug systematically: isolate the problem, test hypotheses, fix it</p>
+                <h4>Systematic Debugging</h4>
+                <p>Isolate the problem, test hypotheses, fix it.</p>
             </div>
             <div class="outcome-item">
-                <div class="outcome-check"></div>
-                <p>Collaborate with defined roles: builder, programmer, tester, driver</p>
+                <h4>Team Collaboration</h4>
+                <p>Work with defined roles: builder, programmer, tester, driver.</p>
             </div>
             <div class="outcome-item">
-                <div class="outcome-check"></div>
-                <p>Competition readiness: strategy, driver practice, engineering notebook</p>
+                <h4>Competition Readiness</h4>
+                <p>Strategy, driver practice, and engineering notebook discipline.</p>
             </div>
         </div>
 
@@ -2205,7 +2127,7 @@ KEY CHANGES:
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Genboo Robotics. Building tomorrow's engineers, one robot at a time.</p>
+                <p>&copy; 2025-2026 Genboo Robotics. Building tomorrow's engineers.</p>
             </div>
         </div>
     </footer>
