@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+KEY CHANGES:
+1. Navigation updated: Programs, Competition Team, Learning Approach, Outcomes, FAQ, Register
+2. Programs restructured by grade bands: Casual Robotics (Grade 1/2/3+) + Competition Team (separate prominent section)
+3. Learning Approach section rewritten with ENGR 391 learning science principles (constructivism, inquiry cycle, scaffolding, formative assessment, feedback loops)
+4. Added "How We Track Progress" subsection explaining homework system and parent reports
+5. Added new Outcomes section with metric-like bullets and showcase gallery placeholder
+6. About/Team section tightened with "Parent-led, research-informed" and safety note
+7. Registration updated with new program selector matching grade bands
+8. Added comprehensive FAQ section with 10 questions
+9. Cleaned up duplicated CSS (.company-logo, .separator), improved mobile spacing
+10. Added sticky mobile CTA bar, reduced card min-heights, improved 375px width experience
+-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +28,14 @@
             --primary: #0A0A0A;
             --secondary: #F5F5F5;
             --accent: #6366F1;
+            --accent-dark: #4338CA;
             --text-primary: #0A0A0A;
             --text-secondary: #333333;
             --text-tertiary: #666666;
             --border: #F3F4F6;
             --hover: #EEF2FF;
             --gradient: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            --success: #10B981;
         }
 
         body {
@@ -71,13 +86,13 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 48px;
+            gap: 32px;
         }
 
         nav a {
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: -0.01em;
             transition: color 0.2s ease;
@@ -98,7 +113,7 @@
         }
 
         .nav-cta:hover {
-            background: #4338CA;
+            background: var(--accent-dark);
             transform: translateY(-1px);
         }
 
@@ -113,13 +128,12 @@
             overflow: hidden;
         }
 
-        /* Video Background */
         .video-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            min-height: 100vh; /* Allows the container to grow if needed */
+            min-height: 100vh;
             overflow: hidden;
             z-index: 0;
         }
@@ -142,14 +156,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.45);
             z-index: 1;
         }
 
         .hero-content {
             max-width: 95%;
             margin: 0 auto;
-            padding: 64px 0;
+            padding: 64px 24px;
             text-align: center;
             z-index: 2;
             position: relative;
@@ -185,14 +199,6 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 40px !important;
-                line-height: 1.1;
-                width: 100%;
-            }
-        }
-
         .hero h1 .gradient-text {
             background: linear-gradient(135deg, #4A90E2 0%, #7B68EE 100%);
             -webkit-background-clip: text;
@@ -201,8 +207,8 @@
         }
 
         .hero-description {
-            font-size: 24px;
-            line-height: 1.3;
+            font-size: 20px;
+            line-height: 1.4;
             color: rgba(255, 255, 255, 0.9);
             max-width: 680px;
             text-align: center;
@@ -213,7 +219,7 @@
 
         .hero-actions {
             display: flex;
-            gap: 32px;
+            gap: 20px;
             justify-content: center;
             animation: fadeInUp 0.8s ease 0.3s both;
         }
@@ -233,7 +239,7 @@
         }
 
         .btn-primary:hover {
-            background: #4338CA;
+            background: var(--accent-dark);
             transform: translateY(-2px);
         }
 
@@ -257,45 +263,35 @@
             transform: translateY(-2px);
         }
 
-        /* Animated Background */
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.03;
-            z-index: 1;
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid var(--accent);
         }
 
-        .grid-line {
-            position: absolute;
-            background: var(--primary);
-            opacity: 0.5;
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
         }
 
-        .grid-line.vertical {
-            width: 1px;
-            height: 100%;
-            top: 0;
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        .grid-line.horizontal {
-            height: 1px;
-            width: 100%;
-            left: 0;
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        /* Main Content Section */
+        /* Section Styling */
         .section {
-            padding: 100px;
+            padding: 80px 24px;
         }
 
         .section-header {
-            max-width: 95%;
-            margin: 0 auto 80px;
+            max-width: 800px;
+            margin: 0 auto 60px;
         }
 
         .section-label {
@@ -323,176 +319,494 @@
             max-width: 720px;
         }
 
-        /* Class Grid */
-        .class-grid {
-            max-width: 95%;
+        /* Programs Section */
+        .programs-container {
+            max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
         }
 
-        .class-card {
+        .track-header {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .track-header h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .track-header p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .grade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .grade-card {
             background: white;
             border: 1px solid var(--border);
             border-radius: 16px;
-            overflow: hidden;
+            padding: 32px;
             transition: all 0.3s ease;
-            cursor: pointer;
-            min-height: 600px;
         }
 
-        .class-card:hover {
+        .grade-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
             border-color: var(--accent);
         }
 
-        .class-card-header {
-            background: var(--secondary);
-            padding: 48px 24px;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
+        .grade-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
-        .class-icon {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border-radius: 20px;
+        .grade-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--accent);
+            color: white;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
-            margin: 0 auto 24px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-        }
-
-        .class-card h3 {
-            font-size: 32px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             letter-spacing: -0.02em;
-            color: var(--text-primary);
-            margin-bottom: 8px;
         }
 
-        .class-card-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .class-card-content {
-            padding: 40px;
-        }
-
-        .class-meta {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .meta-label {
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: var(--text-tertiary);
-        }
-
-        .meta-value {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        .class-description {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            height: auto;
-            overflow: visible;
-        }
-
-        .class-action {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-        }
-
-        @media (max-width: 768px) {
-            .class-action {
-                flex-direction: column; /* Stack items vertically */
-                align-items: center; /* Align items to the start */
-                gap: 16px; /* Add some space between the rows */
-            }
-        }
-
-        .class-price {
-            font-size: 18px;
+        .grade-card h4 {
+            font-size: 22px;
             font-weight: 600;
-            margin-bottom: 8px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
         }
 
-        .class-price span {
+        .grade-badge {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        .grade-details {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .grade-detail {
+            font-size: 13px;
+            color: var(--text-secondary);
+            background: var(--secondary);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .grade-section {
+            margin-bottom: 20px;
+        }
+
+        .grade-section-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-tertiary);
+            margin-bottom: 10px;
+        }
+
+        .grade-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .grade-section li {
             font-size: 15px;
             color: var(--text-secondary);
-            font-weight: 400;
+            padding: 6px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
         }
 
-        .class-bundle {
-            font-size: 16px;
-            color: var(--text-primary);
-            background: #f5f5fa;
-            border-radius: 8px;
-            padding: 8px 16px;
-            display: inline-block;
+        .grade-section li::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            top: -2px;
+        }
+
+        .grade-fit {
+            background: var(--hover);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .grade-fit-title {
+            font-size: 14px;
             font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
         }
 
-        /* Team Section */
-        .team-intro {
+        .grade-fit p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Competition Team Cards */
+        .competition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .competition-block {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .competition-block:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .competition-block h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .competition-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .competition-block li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .competition-block li::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            top: -2px;
+        }
+
+        .competition-goals {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 32px;
+        }
+
+        .competition-goals h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #10B981;
+            margin-bottom: 12px;
+        }
+
+        .competition-goals p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .competition-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: var(--accent);
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-light:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+            background: var(--accent-dark);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--accent);
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid var(--border);
+        }
+
+        .btn-ghost:hover {
+            background: var(--secondary);
+            border-color: var(--accent);
+        }
+
+        /* Learning Approach Section */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .approach-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .approach-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .approach-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .approach-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .approach-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* Progress Tracking Subsection */
+        .progress-section {
             max-width: 900px;
-            margin: 0 auto 80px;
+            margin: 0 auto;
+            background: var(--hover);
+            border-radius: 20px;
+            padding: 48px;
+        }
+
+        .progress-section h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
             text-align: center;
         }
 
-        .team-intro h3 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--text-primary);
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
         }
 
-        .team-intro p {
-            font-size: 18px;
-            line-height: 1.7;
+        .progress-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-item p {
+            font-size: 15px;
+            line-height: 1.6;
             color: var(--text-secondary);
         }
 
+        /* Outcomes Section */
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+        }
+
+        .outcome-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .outcome-item:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .outcome-check {
+            width: 24px;
+            height: 24px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .outcome-check::after {
+            content: "";
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-bottom: 2px;
+        }
+
+        .outcome-item p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .showcase-section {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .showcase-header h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .showcase-header p {
+            font-size: 15px;
+            color: var(--text-tertiary);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .showcase-card {
+            background: var(--secondary);
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-4px);
+            background: var(--hover);
+        }
+
+        .showcase-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+
+        .showcase-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* About/Team Section */
         .credentials-showcase {
-            max-width: 95%;
-            margin: 0 auto 80px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .company-text-bar {
             text-align: center;
-            margin-bottom: 60px;
-            padding: 48px 24px;
+            margin-bottom: 48px;
+            padding: 40px 24px;
             background: white;
             border-radius: 16px;
             border: 1px solid var(--border);
-            overflow: hidden;
         }
 
         .company-names {
@@ -501,50 +815,34 @@
             gap: 24px;
             justify-items: center;
             align-items: center;
-            text-align: center;
             max-width: 900px;
             margin: 0 auto;
         }
-        @media (max-width: 600px) {
-            .company-names {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px 12px;
-            }
-            .company-logo {
-                height: 40px;
-            }
-        }
+
         .company-logo {
             height: 80px;
             max-width: 100%;
             object-fit: contain;
-            display: block;
-            justify-content: center;
-            transition: transform 0.2s;
+            opacity: 0.8;
+            transition: all 0.2s ease;
         }
 
         .company-logo:hover {
-            transform: scale(1.1);
-        }
-
-        .separator {
-            color: gray;
-            font-weight: 300;
-            margin: 0 10px;
-            font-size: 18px;
+            opacity: 1;
+            transform: scale(1.05);
         }
 
         .credentials-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            margin-bottom: 60px;
+            gap: 24px;
+            margin-bottom: 48px;
         }
 
         .credential-card {
             background: white;
             border-radius: 16px;
-            padding: 40px;
+            padding: 32px;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
@@ -555,96 +853,207 @@
         }
 
         .credential-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--secondary);
+            width: 56px;
+            height: 56px;
+            background: var(--accent);
+            color: white;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            margin-bottom: 24px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
         .credential-card h4 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 12px;
         }
 
         .credential-card p {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.6;
             color: var(--text-secondary);
         }
 
-        .why-us-grid {
+        .team-values {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            max-width: 1200px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .team-value {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--border);
+        }
+
+        .team-value h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .team-value p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .why-us-card {
-            background: var(--secondary);
-            padding: 48px;
-            border-radius: 16px;
-            text-align: center;
+        .faq-item {
+            border-bottom: 1px solid var(--border);
         }
 
-        .why-us-card h4 {
-            font-size: 24px;
+        .faq-question {
+            width: 100%;
+            padding: 24px 0;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 17px;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 20px;
-            line-height: 1.3;
+            font-family: inherit;
         }
 
-        .why-us-card p {
+        .faq-question:hover {
+            color: var(--accent);
+        }
+
+        .faq-icon {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+            color: var(--text-tertiary);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 24px;
+        }
+
+        .faq-answer p {
             font-size: 16px;
             line-height: 1.7;
             color: var(--text-secondary);
         }
 
+        /* Registration Section */
+        .registration-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+
+        .form-submit {
+            background: var(--accent);
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 100px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--accent-dark);
+        }
+
+        .schedule-note {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-tertiary);
+        }
+
+        /* Story Section */
         .team-story-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
-            gap: 40px;
-            max-width: 95%;
-            margin: 0 auto 80px;
-        }
-        @media (max-width: 900px) {
-            .team-story-container {
-                display: block;
-            }
-            .team-story,
-            .video-wrapper {
-                margin-bottom: 32px;
-                width: 100%;
-                max-width: 100%;
-            }
-            .team-story:last-child,
-            .video-wrapper:last-child {
-                margin-bottom: 0;
-            }
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .team-story {
             grid-column: 2 / 3;
             grid-row: 1 / 2;
-            width: 100%;
-            padding: 48px 40px 40px 40px;
+            padding: 40px;
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             border: 1px solid var(--border);
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
         }
+
         .team-story-label {
             font-size: 13px;
             font-weight: 500;
@@ -653,169 +1062,95 @@
             color: var(--text-tertiary);
             margin-bottom: 16px;
         }
+
         .team-story h3 {
-            font-size: clamp(36px, 5vw, 56px);
+            font-size: clamp(28px, 4vw, 36px);
             font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
             color: var(--accent);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
+
         .team-story-description {
-            font-size: 20px;
-            line-height: 1.5;
+            font-size: 16px;
+            line-height: 1.6;
             color: var(--text-secondary);
             margin-bottom: 16px;
         }
+
         .team-story strong {
-            font-weight: 700;
             color: var(--text-primary);
         }
+
+        .video-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+
         .video-hero {
             grid-column: 1 / 2;
             grid-row: 1 / 2;
         }
+
         .video-demo1 {
             grid-column: 1 / 2;
             grid-row: 2 / 3;
         }
+
         .video-demo2 {
             grid-column: 2 / 3;
             grid-row: 2 / 3;
         }
 
-        /* Feature Section */
-        .feature-grid {
-            max-width: 95%;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-        }
-
-        .feature-item {
-            padding: 48px 32px;
-            border: 1px solid var(--border);
-            background: white;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background: var(--hover);
-        }
-
-        .feature-number {
-            font-size: 28px;
-            font-weight: 700;
-            background: var(--text-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 16px;
-        }
-
-        .feature-item h3 {
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .feature-item p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 24px;
-        }
-
-        .cta-section p {
-            font-size: 20px;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 40px;
-        }
-
-        .btn-white {
-            background: white;
-            color: var(--primary);
-            padding: 16px 40px;
-            text-decoration: none;
-            border-radius: 100px;
-            font-weight: 500;
-            font-size: 16px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* Footer */
         footer {
             background: white;
-            padding: 80px 40px 40px;
+            padding: 60px 24px 32px;
             border-top: 1px solid var(--border);
         }
 
         .footer-content {
-            max-width: 95%;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 80px;
-            margin-bottom: 60px;
+            gap: 48px;
+            margin-bottom: 48px;
         }
 
         .footer-brand h3 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             color: var(--text-primary);
         }
 
         .footer-brand p {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.6;
             color: var(--text-secondary);
-            max-width: 320px;
+            max-width: 280px;
         }
 
         .footer-column h4 {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--text-primary);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .footer-column ul {
@@ -823,26 +1158,24 @@
         }
 
         .footer-column li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .footer-column a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             transition: color 0.2s ease;
         }
 
         .footer-column a:hover {
-            color: var(--text-primary);
+            color: var(--accent);
         }
 
         .footer-bottom {
-            padding-top: 40px;
+            padding-top: 32px;
             border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            text-align: center;
         }
 
         .footer-bottom p {
@@ -850,129 +1183,32 @@
             color: var(--text-tertiary);
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Mobile Sticky CTA */
+        .mobile-sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 12px 24px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 999;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 1;
-            }
+        .mobile-sticky-cta a {
+            display: block;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .nav-container {
-                padding: 20px 24px;
-            }
-
-            .hero h1 {
-                font-size: clamp(40px, 10vw, 72px);
-            }
-
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .feature-item:nth-child(2n) {
-                border-right: none;
-            }
-
-            .separator {
-                display: none;
-            }
-
-            .team-content {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
-
-            .why-us-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-story {
-                padding: 40px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 24px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            .hero {
-                min-height: 80vh;
-                padding: 100px 24px 60px;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .section {
-                padding: 48px 8px;
-            }
-
-            .class-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .feature-item {
-                border-right: none;
-            }
-
-            .feature-item:not(:last-child) {
-                border-bottom: 1px solid var(--border);
-            }
-
-            .credentials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 24px;
-            }
-        }
-
-        /* Mobile Menu Toggle */
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
             background: none;
@@ -990,59 +1226,6 @@
             transition: all 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-        }
-
-        .logo-flex {
-            display: flex;
-            align-items: center;
-        }
-        .logo-img {
-            height: 56px;
-            background: #fff;
-            border-radius: 12px;
-            padding: 8px;
-            box-sizing: border-box;
-            display: block;
-        }
-        .logo-separator {
-            width: 1px;
-            height: 56px;
-            background: #E5E5E5;
-            margin: 0 20px;
-            display: block;
-        }
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #0A0A0A;
-            line-height: 1;
-            display: block;
-        }
-
-        .company-logo {
-            height: 80px;
-            max-width: 100%;
-            object-fit: contain;
-            display: block;
-            justify-content: center;
-            transition: transform 0.2s;
-        }
-
-        .company-logo:hover {
-            transform: scale(1.1);
-        }
-
-        .separator {
-            color: gray;
-            font-weight: 300;
-            margin: 0 10px;
-            font-size: 18px;
-        }
-
         .mobile-menu {
             position: absolute;
             top: 72px;
@@ -1050,54 +1233,245 @@
             left: 24px;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            padding: 32px 24px;
+            gap: 8px;
+            padding: 24px;
             z-index: 2000;
         }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 17px;
+            font-weight: 600;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--hover);
+            color: var(--accent);
+        }
+
+        .mobile-menu .nav-cta {
+            margin-top: 16px;
+            text-align: center;
+            background: var(--accent);
+            color: white !important;
+        }
+
+        /* Logo */
+        .logo-flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 48px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+
+        .logo-separator {
+            width: 1px;
+            height: 40px;
+            background: #E5E5E5;
+            margin: 0 16px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            nav {
+                gap: 24px;
+            }
+
+            .team-story-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .team-story,
+            .video-hero,
+            .video-demo1,
+            .video-demo2 {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-values {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .mobile-sticky-cta {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+
+            .hero {
+                min-height: 85vh;
+            }
+
+            .hero h1 {
+                font-size: 36px !important;
+                line-height: 1.1;
+            }
+
+            .hero-description {
+                font-size: 17px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 60px 16px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .grade-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .competition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .competition-actions {
+                flex-direction: column;
+            }
+
+            .btn-light,
+            .btn-ghost {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-section {
+                padding: 32px 24px;
+            }
+
+            .progress-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-values {
+                grid-template-columns: 1fr;
+            }
+
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .company-names {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .company-text-bar {
+                padding: 24px 16px;
+            }
+
+            .registration-form {
+                padding: 24px 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .logo-separator {
+                height: 32px;
+                margin: 0 12px;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+        }
+
         @media (min-width: 769px) {
             .mobile-menu {
                 display: none !important;
             }
         }
 
-        .mobile-menu a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-size: 20px;
-            font-weight: 600;
-            padding: 12px 0;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
-            display: block;
-        }
-
-        .mobile-menu a:not(.nav-cta):hover,
-        .mobile-menu a:not(.nav-cta):active {
-            background: var(--hover);
-            color: var(--accent);
-        }
-
-        .mobile-menu .nav-cta {
-            margin-top: 24px;
-            font-size: 18px;
-            padding: 16px 0;
-            text-align: center;
-            border-radius: 100px;
-            background: var(--accent);
-            color: #fff !important;
-            display: block;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(99,102,241,0.08);
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .mobile-menu .nav-cta:hover,
-        .mobile-menu .nav-cta:active {
-            background: #4338CA;
-            color: #fff !important;
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -1106,23 +1480,29 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo" id="logo-link">
-              <span class="logo-flex">
-                <img src="assets/images/logo.jpg" alt="Genboo Logo" class="logo-img">
-                <span class="logo-separator"></span>
-                <span class="logo-text">Genboo</span>
-              </span>
+                <span class="logo-flex">
+                    <img src="assets/images/logo.jpg" alt="Genboo Logo" class="logo-img">
+                    <span class="logo-separator"></span>
+                    <span class="logo-text">Genboo</span>
+                </span>
             </a>
             <nav>
-                <a href="#classes">Classes</a>
-                <a href="#about">About us</a>
-                <a href="#approach">How we teach</a>
+                <a href="#about">About Us</a>
+                <a href="#programs">Programs</a>
+                <a href="#competition">Competition Team</a>
+                <a href="#consulting">Tech Consulting</a>
+                <a href="#faq">FAQ</a>
+                <a href="#register" class="nav-cta">Register</a>
             </nav>
             <div class="mobile-menu" id="mobileMenu" style="display: none;">
-                <a href="#classes">Classes</a>
-                <a href="#about">About us</a>
-                <a href="#approach">How we teach</a>
+                <a href="#about">About Us</a>
+                <a href="#programs">Programs</a>
+                <a href="#competition">Competition Team</a>
+                <a href="#consulting">Tech Consulting</a>
+                <a href="#faq">FAQ</a>
+                <a href="#register" class="nav-cta">Register</a>
             </div>
-            <button class="menu-toggle">
+            <button class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1132,384 +1512,665 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Video Background -->
         <div class="video-background">
             <video autoplay muted loop playsinline>
-                <!-- Primary video source - use .mp4 for best compatibility -->
                 <source src="assets/videos/hero-background.mp4" type="video/mp4">
-                <!-- Fallback to .mov for Safari/Apple devices -->
                 <source src="YOUR_VIDEO_URL_HERE" type="video/quicktime">
-                <!-- Additional fallback -->
-                <source src="YOUR_VIDEO_URL_HERE" type="video/mov">
-                <!-- Fallback for browsers that don't support video -->
                 Your browser does not support the video tag.
             </video>
             <div class="video-overlay"></div>
         </div>
-        
-        <!-- Remove the grid background since we have video now -->
-        
+
         <div class="hero-content">
-            <h1>Build. <span class="gradient-text">Code.</span> Create.</span></h1>
+            <h1>Build. <span class="gradient-text">Code.</span> Create.</h1>
             <p class="hero-description">
-                Our immersive AI & robotics programs ignite curiosity and empower kids to become tomorrow's makers, thinkers, and leaders, led by researchers, engineers, and designers from world-class institutions like Stanford University, Carnegie Mellon University, Google, Baidu, NVIDIA, and Apple.
+                A hands-on robotics and AI studio in the Bay Area. Small groups, learning-science-driven curriculum, and real engineering skills—built by researchers and parents who care.
             </p>
             <div class="hero-actions">
+                <a href="#programs" class="btn-secondary">See Programs</a>
+                <a href="#register" class="btn-primary">Register Now</a>
             </div>
         </div>
     </section>
 
-    <!-- Team/About Section -->
+    <!-- About Section -->
     <section id="about" class="section" style="background: var(--secondary);">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Our Team</p>
-                <h2>Experienced Builders in AI & Robotics</h2>
-                <p class="section-description">
-                    We're a team of AI and robotics researchers, engineers, and designers—<strong>and parents with kids of our own</strong>—bringing over a decade of experience from leading universities and top tech companies. We're here to turn cutting-edge technology into playful, engaging, and skill-building experiences that we'd want for our own children.
-                </p>
+        <div class="section-header">
+            <p class="section-label">Our Team</p>
+            <h2>Experienced Builders in AI & Robotics</h2>
+            <p class="section-description">
+                We're a team of AI and robotics researchers, engineers, and designers—<strong>and parents with kids of our own</strong>—bringing over a decade of experience from leading universities and top tech companies. We're here to turn cutting-edge technology into playful, engaging, and skill-building experiences that we'd want for our own children.
+            </p>
+        </div>
+
+        <!-- Company Credentials -->
+        <div class="credentials-showcase">
+            <div class="company-text-bar">
+                <div class="company-names">
+                    <img src="assets/images/nvidia-logo.png" alt="NVIDIA" class="company-logo" style="height: 16px;">
+                    <img src="assets/images/google-logo.png" alt="Google" class="company-logo" style="height: 20px;">
+                    <img src="assets/images/cmu-logo.png" alt="Carnegie Mellon University" class="company-logo" style="height: 16px;">
+                    <img src="assets/images/meta-logo.png" alt="Meta" class="company-logo" style="height: 12px;">
+                    <img src="assets/images/baidu-logo.png" alt="Baidu Research" class="company-logo" style="height: 20px;">
+                    <img src="assets/images/stanford-logo.png" alt="Stanford University" class="company-logo" style="height: 24px;">
+                    <img src="assets/images/thu-logo.png" alt="Tsinghua University" class="company-logo" style="height: 24px;">
+                    <img src="assets/images/sjtu-logo.png" alt="Shanghai Jiao Tong University" class="company-logo" style="height: 24px;">
+                </div>
             </div>
 
-            <!-- Company Credentials -->
-            <div class="credentials-showcase">
-                <div class="company-text-bar">
-                    <div class="company-names">
-                        <img src="assets/images/nvidia-logo.png" alt="NVIDIA" class="company-logo" style="height: 16px;">
-                        <img src="assets/images/google-logo.png" alt="Google" class="company-logo" style="height: 20px;">
-                        <img src="assets/images/cmu-logo.png" alt="Carnegie Mellon University" class="company-logo" style="height: 16px;">
-                        <img src="assets/images/meta-logo.png" alt="Meta" class="company-logo" style="height: 12px;">
-                        <img src="assets/images/baidu-logo.png" alt="Baidu Research" class="company-logo" style="height: 20px;">
-                        <img src="assets/images/stanford-logo.png" alt="Stanford University" class="company-logo" style="height: 24px;">
-                        <img src="assets/images/thu-logo.png" alt="Tsinghua University" class="company-logo" style="height: 24px;">
-                        <img src="assets/images/sjtu-logo.png" alt="Shanghai Jiao Tong University" class="company-logo" style="height: 24px;">
-                    
-                    </div>
+            <div class="credentials-grid">
+                <div class="credential-card">
+                    <h4>PhD in Robotics Research</h4>
+                    <p>Advanced degrees in robotics and AI from Carnegie Mellon University, Stanford University, and Shanghai Jiao Tong University</p>
                 </div>
+                <div class="credential-card">
+                    <h4>Tech Industry Veterans</h4>
+                    <p>AI researchers from NVIDIA, Google, Apple, Baidu Research, and Carnegie Mellon University with years of cutting-edge experience</p>
+                </div>
+                <div class="credential-card">
+                    <h4>AI & UX Design Experts</h4>
+                    <p>Human-centered design for AI products and educational experiences that kids actually love</p>
+                </div>
+                <div class="credential-card">
+                    <h4>Published Research</h4>
+                    <p>Machine learning and robotics research at top-tier conferences</p>
+                </div>
+            </div>
 
-                <div class="credentials-grid">
-                    <div class="credential-card">
-                        <div class="credential-icon">🎓</div>
-                        <h4>PhD in Robotics Research</h4>
-                        <p>Advanced degrees in robotics and AI from Carnegie Mellon University, Stanford University, and Shanghai Jiao Tong University</p>
-                    </div>
-                    <div class="credential-card">
-                        <div class="credential-icon">🌐</div>
-                        <h4>Tech Industry Veterans</h4>
-                        <p>AI researchers from NVIDIA, Google, Apple, Baidu Research, and Carnegie Mellon University with years of cutting-edge experience</p>
-                    </div>
-                    <div class="credential-card">
-                        <div class="credential-icon">🎨</div>
-                        <h4>AI & UX Design Experts</h4>
-                        <p>Human-centered design for AI products and educational experiences that kids actually love</p>
-                    </div>
-                    <div class="credential-card">
-                        <div class="credential-icon">📚</div>
-                        <h4>Published Research</h4>
-                        <p>Machine learning and robotics research at top-tier conferences</p>
-                    </div>
+            <div class="team-values">
+                <div class="team-value">
+                    <h4>Parent-Led</h4>
+                    <p>We're not just instructors—we're parents building what we'd want for our own kids. Every decision is personal.</p>
+                </div>
+                <div class="team-value">
+                    <h4>Research-Informed</h4>
+                    <p>Our curriculum draws from learning science research, not just robotics trends. We apply what actually works.</p>
+                </div>
+                <div class="team-value">
+                    <h4>Safety & Supervision</h4>
+                    <p>Small groups with 1:4 ratios. Background-checked staff. Clear protocols for tools and equipment. Your child's safety is non-negotiable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section">
+        <div class="team-story-container">
+            <div class="video-wrapper video-hero" style="position:relative;">
+                <video id="demoVideo3" loop muted autoplay playsinline>
+                    <source src="assets/videos/demo3.mov" type="video/quicktime">
+                    <source src="assets/videos/demo3.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button id="playDemoBtn3" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
+            </div>
+            <div class="team-story">
+                <div class="team-story-label">Our Story</div>
+                <h3>Building What We Wished We Had</h3>
+                <p class="team-story-description">
+                    We've known each other for nearly ten years—through grad school, research labs, and tech companies. We've built AI systems used by millions, published at top conferences, and shipped products at NVIDIA, Google, and Apple.
+                </p>
+                <p class="team-story-description">
+                    But when we became parents, we asked: <strong>What if we could create the learning experience we wished for as kids?</strong>
+                </p>
+                <p class="team-story-description">
+                    This isn't another coding school. It's what happens when researchers who actually build things decide to teach kids how to do the same.
+                </p>
+            </div>
+            <div class="video-wrapper video-demo1" style="position:relative;">
+                <video id="demoVideo1" loop muted autoplay playsinline>
+                    <source src="assets/videos/demo.mov" type="video/quicktime">
+                    <source src="assets/videos/demo.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button id="playDemoBtn1" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
+            </div>
+            <div class="video-wrapper video-demo2" style="position:relative;">
+                <video id="demoVideo2" loop muted autoplay playsinline>
+                    <source src="assets/videos/demo2.mov" type="video/quicktime">
+                    <source src="assets/videos/demo2.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button id="playDemoBtn2" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Approach Section -->
+    <section id="approach" class="section" style="background: var(--secondary);">
+        <div class="section-header">
+            <p class="section-label">Learning Approach</p>
+            <h2>How Kids Actually Learn Engineering</h2>
+            <p class="section-description">
+                Our curriculum is grounded in learning science—not just robotics trends. Every session is designed around how kids build understanding, not just what they build.
+            </p>
+        </div>
+
+        <div class="approach-grid">
+            <div class="approach-card">
+                <h4>Constructivism</h4>
+                <p>Kids learn by doing—building, testing, breaking, and rebuilding. Understanding emerges from hands-on experience, not from watching or listening.</p>
+            </div>
+            <div class="approach-card">
+                <h4>Inquiry Cycle</h4>
+                <p>Every project follows: Predict, Build, Test, Analyze, Improve. This loop teaches kids to think like engineers, not just follow instructions.</p>
+            </div>
+            <div class="approach-card">
+                <h4>Scaffolding</h4>
+                <p>We start with worked examples, move to guided practice, then independent challenges. Support fades as competence grows.</p>
+            </div>
+            <div class="approach-card">
+                <h4>Formative Assessment</h4>
+                <p>Quick checks, exit tickets, and our homework system let us catch misconceptions early—before they become habits.</p>
+            </div>
+            <div class="approach-card">
+                <h4>Desirable Difficulties</h4>
+                <p>Challenges are calibrated to stretch—not frustrate. Productive struggle builds persistence and deeper learning.</p>
+            </div>
+            <div class="approach-card">
+                <h4>Fast Feedback Loops</h4>
+                <p>The robot tells kids immediately if their code works. Coaches and peers add reflection. Learning happens in real-time.</p>
+            </div>
+        </div>
+
+        <!-- How We Track Progress -->
+        <div class="progress-section">
+            <h3>How We Track Progress</h3>
+            <div class="progress-grid">
+                <div class="progress-item">
+                    <h4>Homework System</h4>
+                    <p>Short weekly assignments reinforce concepts: a design sketch, or a concept check quiz. Takes 10–15 min, helps retention.</p>
+                </div>
+                <div class="progress-item">
+                    <h4>Skill Milestones</h4>
+                    <p>We track concrete skills—not vague "participation." Can they explain gear ratios? Debug a sensor? Write a loop? You'll know.</p>
+                </div>
+                <div class="progress-item">
+                    <h4>Parent Meetings</h4>
+                    <p>Regular 1:1 meetings with parents to discuss what your child built, skills demonstrated, and specific next steps. No generic "doing great" reports.</p>
+                </div>
+                <div class="progress-item">
+                    <h4>Engineer Identity</h4>
+                    <p>Showcases and presentations help kids see themselves as engineers. They explain their work, not just show it.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Programs Section -->
-    <section id="classes" class="section">
+    <section id="programs" class="section" style="background: var(--secondary);">
         <div class="section-header">
-            <p class="section-label">Our Classes</p>
-            <h2>For Every Young Innovator</h2>
+            <p class="section-label">Our Programs</p>
+            <h2>Robotics for Every Young Engineer</h2>
             <p class="section-description">
-                From their very first line of code to advanced robotics projects, our progressive curriculum empowers kids to build real skills, gain confidence, and dream bigger every step of the way.
+                From first-time builders to aspiring competitors, our grade-banded programs meet kids where they are. Small groups, hands-on projects, and real engineering skills that transfer beyond any single platform.
             </p>
         </div>
 
-        <div class="class-grid">
-            <!-- VEX 123 Class -->
-            <div id="vex-123" class="class-card">
-                <div class="class-card-header">
-                    <div class="class-icon">🚀</div>
-                    <h3>VEX 123 Robotics</h3>
-                </div>
-                <div class="class-card-content">
-                    <div class="class-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Ages</span>
-                            <span class="meta-value">4-6 years</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Level</span>
-                            <span class="meta-value">Beginner</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Schedule</span>
-                            <span class="meta-value">9 classes, 1 hours each</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">CLASS SIZE</span>
-                            <span class="meta-value">Teacher-to-student: 1:2</span>
+        <div class="programs-container">
+            <div class="grade-grid">
+                <!-- Grade 1 -->
+                <div class="grade-card">
+                    <div class="grade-card-header">
+                        <div class="grade-icon">G1</div>
+                        <div>
+                            <h4>Grade 1</h4>
+                            <span class="grade-badge">Ages 6–7 • Beginner</span>
                         </div>
                     </div>
-                    <p class="class-description">
-                        Screen-free robotics adventure perfect for young minds. Through storytelling and hands-on building, kids discover the magic of making robots come to life.<a href="https://www.vexrobotics.com/123" target="_blank" rel="noopener" style="margin-left: 4px; font-weight: 600; color: var(--accent); text-decoration: underline;">Learn More</a>
-                    </p>
-                    <div class="class-action">
+                    <div class="grade-details">
+                        <span class="grade-detail">1:4 ratio</span>
+                        <span class="grade-detail">60 min each</span>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">What Kids Build</p>
+                        <ul>
+                            <li>Simple wheeled robots with basic steering</li>
+                            <li>Button-programmed movement sequences</li>
+                            <li>Obstacle courses and story-based missions</li>
+                        </ul>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">Skills They Learn</p>
+                        <ul>
+                            <li>Sequencing and step-by-step thinking</li>
+                            <li>Following and debugging instructions</li>
+                            <li>Cause-and-effect reasoning</li>
+                            <li>Basic spatial awareness</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
 
-            <!-- VEX IQ Beginner Class -->
-            <div id="vex-iq-beginner" class="class-card">
-                <div class="class-card-header">
-                    <div class="class-icon">🧠</div>
-                    <h3>VEX IQ Beginner</h3>
-                </div>
-                <div class="class-card-content">
-                    <div class="class-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Ages</span>
-                            <span class="meta-value">6-8 years</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Level</span>
-                            <span class="meta-value">Beginner</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Schedule</span>
-                            <span class="meta-value">12 classes, 1 hours each</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">CLASS SIZE</span>
-                            <span class="meta-value">Teacher-to-student: 1:2</span>
+                <!-- Grade 2 -->
+                <div class="grade-card">
+                    <div class="grade-card-header">
+                        <div class="grade-icon">G2</div>
+                        <div>
+                            <h4>Grade 2</h4>
+                            <span class="grade-badge">Ages 7–8 • Intermediate</span>
                         </div>
                     </div>
-                    <p class="class-description">
-                        Dive into the exciting world of VEX IQ robotics! Kids learn to build, program, and control robots using the VEX IQ platform. Through hands-on projects, they develop critical thinking, problem-solving, and teamwork skills while having fun with robotics engineering.<a href="https://www.vexrobotics.com/iq" target="_blank" rel="noopener" style="margin-left: 4px; font-weight: 600; color: var(--accent); text-decoration: underline;">Learn More</a>
-                    </p>
-                    <div class="class-action">
+                    <div class="grade-details">
+                        <span class="grade-detail">1:4 ratio</span>
+                        <span class="grade-detail">60 min each</span>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">What Kids Build</p>
+                        <ul>
+                            <li>Robots with sensors (touch, distance)</li>
+                            <li>Block-based programs with loops</li>
+                            <li>Custom mechanisms (claws, pushers)</li>
+                        </ul>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">Skills They Learn</p>
+                        <ul>
+                            <li>Basic sensor logic (if-then)</li>
+                            <li>Iteration and loops</li>
+                            <li>Mechanical problem-solving</li>
+                            <li>Testing and revising designs</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
 
-            <!-- VEX IQ Advanced Class -->
-            <div id="vex-iq-advanced" class="class-card">
-                <div class="class-card-header">
-                    <div class="class-icon">🚀</div>
-                    <h3>VEX IQ Advanced</h3>
-                </div>
-                <div class="class-card-content">
-                    <div class="class-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Ages</span>
-                            <span class="meta-value">8+ years</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Level</span>
-                            <span class="meta-value">Advanced</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Schedule</span>
-                            <span class="meta-value">12 classes, 1 hours each</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">CLASS SIZE</span>
-                            <span class="meta-value">Teacher-to-student: 1:2</span>
+                <!-- Grade 3+ -->
+                <div class="grade-card">
+                    <div class="grade-card-header">
+                        <div class="grade-icon">G3+</div>
+                        <div>
+                            <h4>Grade 3+</h4>
+                            <span class="grade-badge">Ages 8–12 • Advanced</span>
                         </div>
                     </div>
-                    <p class="class-description">
-                        Master advanced robotics engineering! Students tackle complex design challenges, develop sophisticated programming skills, and prepare for competitive robotics competitions. Perfect for experienced VEX IQ builders ready to push their limits.
-                    </p>
-                    <div class="class-action">
+                    <div class="grade-details">
+                        <span class="grade-detail">1:4 ratio</span>
+                        <span class="grade-detail">60 min each</span>
                     </div>
-                </div>
-            </div>
-
-            <!-- VEX IQ Competition Class -->
-            <div id="vex-iq-competition" class="class-card">
-                <div class="class-card-header">
-                    <div class="class-icon">🏆</div>
-                    <h3>VEX IQ Competition</h3>
-                </div>
-                <div class="class-card-content">
-                    <div class="class-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Ages</span>
-                            <span class="meta-value">8+ years</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Level</span>
-                            <span class="meta-value">Competition</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Schedule</span>
-                            <span class="meta-value">9 classes, 1.5 hours each</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">CLASS SIZE</span>
-                            <span class="meta-value">Teacher-to-student: 1:2</span>
-                        </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">What Kids Build</p>
+                        <ul>
+                            <li>Multi-motor robots with gear trains</li>
+                            <li>Autonomous routines with multiple sensors</li>
+                            <li>Custom attachments for specific tasks</li>
+                            <li>Documentation of design decisions</li>
+                        </ul>
                     </div>
-                    <p class="class-description">
-                        Compete and excel in VEX IQ robotics competitions! Students work in teams to design, build, and program robots for competitive challenges. Develop strategic thinking, teamwork, and advanced engineering skills while preparing for regional and national competitions.
-                    </p>
-                    <div class="class-action">
+                    <div class="grade-section">
+                        <p class="grade-section-title">Skills They Learn</p>
+                        <ul>
+                            <li>Gear ratios and mechanical advantage</li>
+                            <li>Sensor fusion and autonomous logic</li>
+                            <li>Systematic debugging</li>
+                            <li>Explaining design trade-offs</li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-
-            <!-- AI Explorers Class -->
-            <div id="ai-explorers" class="class-card">
-                <div class="class-card-header">
-                    <div class="class-icon">🤖</div>
-                    <h3>AI Explorers</h3>
-                </div>
-                <div class="class-card-content">
-                    <div class="class-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Ages</span>
-                            <span class="meta-value">10-12 years</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Level</span>
-                            <span class="meta-value">Intermediate</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Schedule</span>
-                            <span class="meta-value">12 classes, 1 hours each</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">CLASS SIZE</span>
-                            <span class="meta-value">Teacher-to-student: 1:2</span>
-                        </div>
-                    </div>
-                    <p class="class-description">
-                        Discover the fascinating world of artificial intelligence! Students learn to create AI models, understand machine learning concepts, and build intelligent applications. From image recognition to natural language processing, kids explore cutting-edge AI technologies while developing computational thinking and creativity.
-                    </p>
-                    <div class="class-action">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Our Story Section -->
-    <section class="section" style="background: var(--secondary);">
-        <div class="container">
-            <div class="team-story-container">
-                <div class="video-wrapper video-hero" style="position:relative;">
-                    <video id="demoVideo3" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
-                        <source src="assets/videos/demo3.mov" type="video/quicktime">
-                        <source src="assets/videos/demo3.mov" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <button id="playDemoBtn3" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
-                </div>
-                <div class="team-story">
-                    <div class="team-story-label">Our Story</div>
-                    <h3>Building Together for the Next Generation</h3>
-                    <p class="team-story-description">
-                        We've known each other for nearly ten years, working together at top AI labs and universities like Carnegie Mellon University, Stanford, NVIDIA, Google, Baidu Research, and Apple Special Projects Group (SPG). Along the way, we've built cutting-edge AI systems, published research, and shipped products used by millions.
-                    </p>
-                    <p class="team-story-description">
-                        But we've always shared a bigger dream: <strong>What if we could create the kind of learning experience we wished for as kids?</strong>
-                    </p>
-                    <p class="team-story-description">
-                        This isn't just another coding school. It's a passion project from a team that's been at the forefront of AI and robotics, now dedicated to making that same technology accessible and magical for the next generation.
-                    </p>
-                </div>
-                <div class="video-wrapper video-demo1" style="position:relative;">
-                    <video id="demoVideo1" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
-                        <source src="assets/videos/demo.mov" type="video/quicktime">
-                        <source src="assets/videos/demo.mov" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <button id="playDemoBtn1" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
-                </div>
-                <div class="video-wrapper video-demo2" style="position:relative;">
-                    <video id="demoVideo2" loop muted autoplay playsinline style="width:100%; height:100%; object-fit: cover; border-radius: 12px; background: #000;">
-                        <source src="assets/videos/demo2.mov" type="video/quicktime">
-                        <source src="assets/videos/demo2.mov" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <button id="playDemoBtn2" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Play</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Approach Section -->
-    <section id="approach" class="section" style="background: white;">
+    <!-- Competition Team Section -->
+    <section id="competition" class="section" style="background: var(--secondary);">
         <div class="section-header">
-            <p class="section-label">Our Philosophy</p>
-            <h2>Learning That Feels Like Magic</h2>
+            <p class="section-label">Competition Team</p>
+            <h2>Structured Competition Team</h2>
             <p class="section-description">
-                We believe the most powerful learning happens when kids are immersed in play, curiosity, and creative challenge. That's why our curriculum is designed to feel like discovery, not instruction—backed by research, and built for joy.
+                This is not a drop-in class—it's a team. Students commit to a full competition season, building skills through consistent practice, iteration, and real tournament experience.
             </p>
         </div>
 
-        <div class="feature-grid">
-            <div class="feature-item">
-                <div class="feature-number">Hands-On From Day One</div>
-                <p>No lectures, no textbooks. Just tools, robots, and the freedom to create from the very first class.</p>
+        <div class="competition-grid">
+            <div class="competition-block">
+                <h4>Weekly Rhythm</h4>
+                <ul>
+                    <li>Regular weekly training (1.5 hrs)</li>
+                    <li>Extra practice week-of tournaments (1 hr/day)</li>
+                </ul>
             </div>
-            <div class="feature-item">
-                <div class="feature-number">Small Groups, Big Impact</div>
-                <p>Maximum 8 students per class ensures personalized attention and meaningful peer collaboration.</p>
+            <div class="competition-block">
+                <h4>What We Expect</h4>
+                <ul>
+                    <li>Attendance commitment through the season</li>
+                    <li>Engineering notebook entries</li>
+                    <li>Team roles: builder, programmer, driver</li>
+                    <li>Sportsmanship and collaboration</li>
+                </ul>
             </div>
-            <div class="feature-item">
-                <div class="feature-number">Real Tools, Real Skills</div>
-                <p>Industry-standard robotics platforms and programming languages that grow with your child.</p>
+            <div class="competition-block">
+                <h4>Tournament Schedule</h4>
+                <ul>
+                    <li>At least one local tournament per month (availability permitting)</li>
+                    <li>Tournaments usually on Saturdays</li>
+                    <li>Regional championship push in Feb</li>
+                </ul>
             </div>
-            <div class="feature-item">
-                <div class="feature-number">Progress You Can See</div>
-                <p>Regular showcases where kids present their creations to family and friends.</p>
+            <div class="competition-block">
+                <h4>Onboarding</h4>
+                <ul>
+                    <li>Tryout or assessment session</li>
+                    <li>Parent orientation meeting</li>
+                    <li>Commitment agreement</li>
+                </ul>
             </div>
-            <div class="feature-item">
-                <div class="feature-number">Expert Mentorship</div>
-                <p>Learn from AI researchers and robotics engineers who know how to make complex concepts click.</p>
+        </div>
+
+        <div class="competition-goals">
+            <h4>Season Goals</h4>
+            <p>
+                <strong>Aug–Sep:</strong> Build a reliable robot, qualify at local tournaments.<br>
+                <strong>Oct–Jan:</strong> Iterate, improve autonomous routines, climb local rankings.<br>
+                <strong>Feb:</strong> Compete for a spot at regionals.
+            </p>
+        </div>
+
+        <div class="competition-actions">
+            <a href="#register" class="btn-light">Apply / Join Waitlist</a>
+            <a href="mailto:hello@genboo.com?subject=Competition Team Inquiry" class="btn-ghost">Book a 1:1 Call</a>
+        </div>
+    </section>
+
+    <!-- Tech Consulting Section -->
+    <section id="consulting" class="section">
+        <div class="section-header">
+            <p class="section-label">For Parents & Teams</p>
+            <h2>Technical Support & Consulting</h2>
+            <p class="section-description">
+                Already have a robotics team or competing in another program? Our engineers can help. We offer technical consulting and support for parents and teams who need expert guidance.
+            </p>
+        </div>
+
+        <div class="programs-container">
+            <div class="grade-grid">
+                <div class="grade-card">
+                    <div class="grade-card-header">
+                        <div>
+                            <h4>Technical Support</h4>
+                            <span class="grade-badge">Hourly Sessions</span>
+                        </div>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">What We Offer</p>
+                        <ul>
+                            <li>Robot debugging and troubleshooting</li>
+                            <li>Code review and optimization</li>
+                            <li>Mechanical design feedback</li>
+                            <li>Sensor and autonomous routine help</li>
+                            <li>Pre-tournament tune-ups</li>
+                        </ul>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">Best For</p>
+                        <ul>
+                            <li>Parent-coached teams needing expert advice</li>
+                            <li>Teams stuck on a specific technical problem</li>
+                            <li>Last-minute competition prep</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grade-card">
+                    <div class="grade-card-header">
+                        <div>
+                            <h4>Strategy Consulting</h4>
+                            <span class="grade-badge">Package Available</span>
+                        </div>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">What We Offer</p>
+                        <ul>
+                            <li>Season planning and goal-setting</li>
+                            <li>Game analysis and strategy development</li>
+                            <li>Team structure and role optimization</li>
+                        </ul>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">Best For</p>
+                        <ul>
+                            <li>New teams getting started</li>
+                            <li>Teams looking to level up</li>
+                            <li>Parents wanting to support more effectively</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grade-card">
+                    <div class="grade-card-header">
+                        <div>
+                            <h4>Workshops</h4>
+                            <span class="grade-badge">Group Sessions</span>
+                        </div>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">What We Offer</p>
+                        <ul>
+                            <li>Parent training sessions</li>
+                            <li>Team skill-building workshops</li>
+                            <li>Programming bootcamps</li>
+                            <li>Mechanical systems deep-dives</li>
+                            <li>Competition preparation clinics</li>
+                        </ul>
+                    </div>
+                    <div class="grade-section">
+                        <p class="grade-section-title">Best For</p>
+                        <ul>
+                            <li>Groups of teams wanting shared training</li>
+                            <li>Schools or clubs building programs</li>
+                            <li>Parent groups coordinating support</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="feature-item">
-                <div class="feature-number">Future-Ready Skills</div>
-                <p>Building creativity, problem-solving, and collaboration skills that matter in any field.</p>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="mailto:hello@genboo.com?subject=Technical Consulting Inquiry" class="btn-primary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section id="outcomes" class="section" style="background: var(--secondary);">
+        <div class="section-header">
+            <p class="section-label">Outcomes</p>
+            <h2>What Your Child Will Be Able to Do</h2>
+            <p class="section-description">
+                Our learning goals focus on real, demonstrable skills—not just "exposure to STEM."
+            </p>
+        </div>
+
+        <div class="outcomes-grid">
+            <div class="outcome-item">
+                <div class="outcome-check"></div>
+                <p>Master robotic mechanisms: power transmission, drivetrain design, and motor control</p>
+            </div>
+            <div class="outcome-item">
+                <div class="outcome-check"></div>
+                <p>Write autonomous routines using sensors—not just button-mashing</p>
+            </div>
+            <div class="outcome-item">
+                <div class="outcome-check"></div>
+                <p>Explain design decisions with evidence ("I chose this because...")</p>
+            </div>
+            <div class="outcome-item">
+                <div class="outcome-check"></div>
+                <p>Debug systematically: isolate the problem, test hypotheses, fix it</p>
+            </div>
+            <div class="outcome-item">
+                <div class="outcome-check"></div>
+                <p>Collaborate with defined roles: builder, programmer, tester, driver</p>
+            </div>
+            <div class="outcome-item">
+                <div class="outcome-check"></div>
+                <p>Competition readiness: strategy, driver practice, engineering notebook</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="section-header">
+            <p class="section-label">FAQ</p>
+            <h2>Common Questions</h2>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    What if my child is new to robotics?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Perfect—most kids start with us at zero experience. Our Grade 1 and Grade 2 programs are designed for complete beginners. We use screen-free, hands-on approaches that build confidence before introducing programming concepts.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do you place kids into levels?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We start with grade level as a baseline, then adjust based on a short conversation and (for older kids) a quick skills assessment. If a child has prior experience, we'll place them where they'll be appropriately challenged—not bored or overwhelmed.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What does the competition team require?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>The competition team is a season-long commitment (roughly Aug–Feb). Expect weekly training, extra practice before tournaments, and Saturday tournament days. We require a parent orientation, commitment agreement, and consistent attendance. It's rewarding, but it's real work.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do you handle different learning speeds?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Small groups (1:4 ratio) let us adapt in real-time. Fast learners get extension challenges; kids who need more time get it. We use formative assessment to catch gaps early, not at the end of a unit.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What's your homework system like?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Short weekly assignments (10–15 min): a concept check, a design sketch, or open-ended questions. The goal is retention and reflection—not busywork. Parents receive progress updates showing what their child completed and what they're working on next.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What's the class size and coaching ratio?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We maintain a strict 1:2 coach-to-student ratio. Classes are capped at small groups to ensure every child gets hands-on time, personalized feedback, and real attention—not crowd management.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What should parents expect during tournaments?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Tournaments are typically full-day Saturday events. Parents drop off and can stay to watch (and cheer!). Kids manage their robot, compete in matches, and learn to handle wins and losses with grace. We handle logistics and supervision; you handle snacks and moral support.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What's your refund or make-up policy?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>If 2 or more students can't attend a class, we skip that session and reschedule. If only one student misses class, they should arrive early to the next session to catch up with the rest of the group. Contact us for specific situations.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Where are classes held?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Classes are held in the Bay Area. Contact us for the current location and schedule—we're happy to share details and answer any questions about the space.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Registration Section -->
-    <section id="registration" class="section" style="background: var(--secondary);">
+    <section id="register" class="section" style="background: var(--secondary);">
         <div class="section-header">
-            <p class="section-label">Class Registration</p>
-            <h2>Let's Build! Register Now</h2>
-            <p class="section-description">Fill out the short form below to secure a spot or join the waitlist.</p>
+            <p class="section-label">Register</p>
+            <h2>Join Genboo Robotics</h2>
+            <p class="section-description">Fill out the form below to register or join our waitlist. We'll be in touch within 24 hours.</p>
         </div>
-        <form action="https://formspree.io/f/xqabbeeb" method="POST" style="max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
-            <label for="name" style="display:block; margin-bottom:8px; color: var(--text-primary); font-weight:500;">Name</label>
-            <input type="text" id="name" name="name" style="width:100%; padding:14px; margin-bottom:24px; border:1px solid var(--border); border-radius:4px; font-size:16px;">
 
-            <label for="email" style="display:block; margin-bottom:8px; color: var(--text-primary); font-weight:500;">Email *</label>
-            <input type="email" id="email" name="email" required style="width:100%; padding:14px; margin-bottom:24px; border:1px solid var(--border); border-radius:4px; font-size:16px;">
+        <form class="registration-form" action="https://formspree.io/f/xqabbeeb" method="POST">
+            <div class="form-group">
+                <label for="name">Parent/Guardian Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
 
-            <label for="phone" style="display:block; margin-bottom:8px; color: var(--text-primary); font-weight:500;">Phone</label>
-            <input type="text" id="phone" name="phone" style="width:100%; padding:14px; margin-bottom:24px; border:1px solid var(--border); border-radius:4px; font-size:16px;">
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-            <label for="program" style="display:block; margin-bottom:8px; color: var(--text-primary); font-weight:500;">Program</label>
-            <select id="program" name="program" style="width:100%; padding:14px; margin-bottom:24px; border:1px solid var(--border); border-radius:4px; font-size:16px;">
-                <option value="VEX 123 Robotics">VEX 123 Robotics</option>
-                <option value="VEX IQ Beginner">VEX IQ Beginner</option>
-                <option value="VEX IQ Advanced">VEX IQ Advanced</option>
-                <option value="VEX IQ Competition">VEX IQ Competition</option>
-                <option value="AI Explorers">AI Explorers</option>
-            </select>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
 
-            <label for="child-age" style="display:block; margin-bottom:8px; color: var(--text-primary); font-weight:500;">Child Age</label>
-            <input type="text" id="child-age" name="child_age" style="width:100%; padding:14px; margin-bottom:24px; border:1px solid var(--border); border-radius:4px; font-size:16px;">
+            <div class="form-group">
+                <label for="program">Program</label>
+                <select id="program" name="program" required>
+                    <optgroup label="Programs">
+                        <option value="Program - Grade 1 (Ages 6-7)">Grade 1 (Ages 6–7)</option>
+                        <option value="Program - Grade 2 (Ages 7-8)">Grade 2 (Ages 7–8)</option>
+                        <option value="Program - Grade 3+ (Ages 8-12)">Grade 3+ (Ages 8–12)</option>
+                    </optgroup>
+                    <optgroup label="Competition">
+                        <option value="Competition Team - Apply">Competition Team — Apply</option>
+                    </optgroup>
+                    <optgroup label="Tech Consulting">
+                        <option value="Tech Consulting - Technical Support">Technical Support</option>
+                        <option value="Tech Consulting - Strategy Consulting">Strategy Consulting</option>
+                        <option value="Tech Consulting - Workshops">Workshops</option>
+                    </optgroup>
+                </select>
+            </div>
 
-            <label for="message" style="display:block; margin-bottom:8px; color: var(--text-primary); font-weight:500;">Message</label>
-            <textarea id="message" name="message" rows="4" style="width:100%; padding:14px; margin-bottom:32px; border:1px solid var(--border); border-radius:4px; font-size:16px;" placeholder="Let us know if you have questions, special requests, or if our offered time doesn't work—please suggest your preferred time(s) here."></textarea>
+            <div class="form-group">
+                <label for="child-name">Child's Name</label>
+                <input type="text" id="child-name" name="child_name">
+            </div>
 
-            <!-- Honeypot field for spam protection -->
+            <div class="form-group">
+                <label for="child-age">Child's Age / Grade</label>
+                <input type="text" id="child-age" name="child_age" placeholder="e.g., 7 years old, 2nd grade">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Questions or Notes</label>
+                <textarea id="message" name="message" rows="4" placeholder="Any questions, scheduling preferences, or things we should know about your child?"></textarea>
+            </div>
+
+            <!-- Honeypot -->
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-            <button type="submit" style="background: var(--accent); font-weight:600; color: white; padding: 14px 40px; border: none; border-radius: 24px; font-size: 18px; font-weight: 600; cursor: pointer;">Send</button>
+            <button type="submit" class="form-submit">Submit Registration</button>
+
+            <p class="schedule-note">Contact us for current schedule and pricing: <a href="mailto:hello@genboo.com" style="color: var(--accent);">hello@genboo.com</a></p>
         </form>
     </section>
 
@@ -1519,23 +2180,21 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h3>Genboo Robotics</h3>
-                    <p>Immersive AI & robotics programs empower kids to become tomorrow's makers, thinkers, and leaders.</p>
+                    <p>Hands-on robotics and AI education for young engineers. Bay Area, small groups, real skills.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Programs</h4>
                     <ul>
-                        <li><a href="#vex-123">VEX 123 Robotics</a></li>
-                        <li><a href="#vex-iq-beginner">VEX IQ Beginner</a></li>
-                        <li><a href="#vex-iq-advanced">VEX IQ Advanced</a></li>
-                        <li><a href="#vex-iq-competition">VEX IQ Competition</a></li>
-                        <li><a href="#ai-explorers">AI Explorers</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#competition">Competition Team</a></li>
+                        <li><a href="#consulting">Tech Consulting</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>About</h4>
+                    <h4>Learn More</h4>
                     <ul>
-                        <li><a href="#about">Our Team</a></li>
-                        <li><a href="#approach">Our Philosophy</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1546,10 +2205,15 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Genboo Robotics. Inspiring young inventors, one robot at a time.</p>
+                <p>&copy; 2025 Genboo Robotics. Building tomorrow's engineers, one robot at a time.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <a href="#register">Register Now</a>
+    </div>
 
     <script>
         // Smooth scrolling for navigation links
@@ -1559,7 +2223,7 @@
                 if (target) {
                     e.preventDefault();
                     // Close mobile menu if open
-                    if (window.getComputedStyle(mobileMenu).display !== 'none') {
+                    if (mobileMenu && window.getComputedStyle(mobileMenu).display !== 'none') {
                         mobileMenu.style.display = 'none';
                         menuOpen = false;
                     }
@@ -1577,7 +2241,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Mobile menu toggle functionality
+        // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const mobileMenu = document.getElementById('mobileMenu');
         let menuOpen = false;
@@ -1595,7 +2259,25 @@
             });
         });
 
-        // Update JavaScript for WeChat detection and sequential frame display
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // WeChat detection and fallback
         function isWeChat() {
             return /micromessenger/i.test(navigator.userAgent);
         }
@@ -1617,41 +2299,60 @@
                 setInterval(() => {
                     currentFrameIndex = (currentFrameIndex + 1) % frames.length;
                     videoBgContainer.querySelector('img').src = frames[currentFrameIndex];
-                }, 5000); // Change frame every 5 seconds
+                }, 5000);
             }
-            // Show play button overlays for all three demo videos only in WeChat
-            var playBtn1 = document.getElementById('playDemoBtn1');
-            var playBtn2 = document.getElementById('playDemoBtn2');
-            var playBtn3 = document.getElementById('playDemoBtn3');
+
+            // Show play buttons for demo videos in WeChat
+            const playBtn1 = document.getElementById('playDemoBtn1');
+            const playBtn2 = document.getElementById('playDemoBtn2');
+            const playBtn3 = document.getElementById('playDemoBtn3');
+            
             if (playBtn1 && playBtn2 && playBtn3) {
                 playBtn1.style.display = 'block';
                 playBtn2.style.display = 'block';
                 playBtn3.style.display = 'block';
+
                 playBtn1.addEventListener('click', function() {
-                    var video1 = document.getElementById('demoVideo1');
-                    video1.play();
+                    document.getElementById('demoVideo1').play();
                     playBtn1.style.display = 'none';
                 });
                 document.getElementById('demoVideo1').addEventListener('playing', function() {
                     playBtn1.style.display = 'none';
                 });
+
                 playBtn2.addEventListener('click', function() {
-                    var video2 = document.getElementById('demoVideo2');
-                    video2.play();
+                    document.getElementById('demoVideo2').play();
                     playBtn2.style.display = 'none';
                 });
                 document.getElementById('demoVideo2').addEventListener('playing', function() {
                     playBtn2.style.display = 'none';
                 });
+
                 playBtn3.addEventListener('click', function() {
-                    var video3 = document.getElementById('demoVideo3');
-                    video3.play();
+                    document.getElementById('demoVideo3').play();
                     playBtn3.style.display = 'none';
                 });
                 document.getElementById('demoVideo3').addEventListener('playing', function() {
                     playBtn3.style.display = 'none';
                 });
             }
+        }
+
+        // Hide mobile sticky CTA when near registration section
+        const mobileCta = document.querySelector('.mobile-sticky-cta');
+        const registerSection = document.getElementById('register');
+        
+        if (mobileCta && registerSection) {
+            window.addEventListener('scroll', () => {
+                const registerRect = registerSection.getBoundingClientRect();
+                if (registerRect.top < window.innerHeight) {
+                    mobileCta.style.opacity = '0';
+                    mobileCta.style.pointerEvents = 'none';
+                } else {
+                    mobileCta.style.opacity = '1';
+                    mobileCta.style.pointerEvents = 'auto';
+                }
+            });
         }
     </script>
 </body>
