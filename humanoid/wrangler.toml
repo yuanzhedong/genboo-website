@@ -1,0 +1,8 @@
+name = "genboo-humanoid"
+compatibility_date = "2024-11-01"
+
+# Cloudflare Workers Static Assets — serves the humanoid subsite from the humanoid/ folder.
+# Deploys to humanoid.genboo.com (custom domain configured in Cloudflare dashboard).
+[assets]
+directory = "./"
+not_found_handling = "404-page"

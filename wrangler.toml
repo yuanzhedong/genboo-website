@@ -1,0 +1,8 @@
+name = "genboo-www"
+compatibility_date = "2024-11-01"
+
+# Cloudflare Workers Static Assets — serves the main Genboo site from the repo root.
+# Deploys to www.genboo.com (custom domain configured in Cloudflare dashboard).
+[assets]
+directory = "./"
+not_found_handling = "404-page"
